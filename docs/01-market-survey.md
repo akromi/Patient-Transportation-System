@@ -71,7 +71,7 @@ and locally felt, and buyers under pressure still choose backend platforms.
 
 **7. The obvious product is the wrong product.** Per-vehicle dispatch SaaS at
 US benchmark pricing ($50–$200/vehicle/month) against Ontario's addressable
-fleet yields roughly **$4M–$7M ARR at full penetration** — a decade of work for
+fleet yields roughly **$3.4M–$5.8M ARR at full penetration** — a decade of work for
 a rounding error. The value is not in selling consoles to operators. It is in
 owning the allocation decision and the settlement rail that currently do not
 exist. See [`02-opportunity-model.md`](02-opportunity-model.md).
@@ -471,7 +471,7 @@ not research findings.**
 ## 10. Recommendation
 
 **Do not build a dispatch platform.** Per-vehicle SaaS in Ontario tops out
-around $4M–$7M ARR and puts you in a knife fight with US incumbents who have
+around $3.4M–$5.8M ARR and puts you in a knife fight with US incumbents who have
 better dispatch products and nothing to do with them here.
 
 **Build the allocation and settlement layer that Ontario does not have** —

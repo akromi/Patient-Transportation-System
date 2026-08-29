@@ -16,9 +16,38 @@ unstable, so those numbers are useful only as a sanity ceiling, never as a
 foundation. North America is credited with ~40.8% of 2025 revenue.
 
 Ontario is ~39% of Canada's population and Canada is ~10% of North American
-health spend, so a naive top-down slice would put Ontario NEMT somewhere near
-USD 250–450M. That happens to bracket the bottom-up answer below, which is mild
-reassurance and nothing more.
+health spend. Applying those to the cited range:
+
+```
+  USD 12.36B–18.19B × 40.8% (North America) × 10% (Canada) × 39% (Ontario)
+  = USD 197M – 289M          ≈ CAD 270M – 396M at ~1.37
+```
+
+**This does not bracket the CAD 502M–691M bottom-up estimate in §2 — it lands at
+roughly half to two-thirds of it.** An earlier draft of this section claimed
+USD 250–450M and said it bracketed the bottom-up answer. Both were wrong: the
+arithmetic did not follow from the stated inputs, and the comparison mixed USD
+against CAD.
+
+The gap is informative rather than alarming, and the likely explanation is
+definitional. Commercial NEMT market reports size the **private NEMT services
+market** — vehicles sold as a service. The bottom-up figure sizes the **entire
+Ontario inter-facility transfer envelope**, including transfers delivered by
+publicly-funded 911 ambulances, which no commercial market report would count.
+Since ~80% of those transfers are non-urgent and a large share still ride on
+ambulance resources (the central finding of this whole survey), a bottom-up
+number well above the commercial-market slice is what you would expect.
+
+But do not now swing to treating it as a check on the **private** pool either:
+at CAD 270M–396M it sits roughly 3× *above* the CAD 35M–116M private-PTS
+estimate in §3 S-A, and roughly half *below* the total envelope. It lands
+between this document's two bottom-up figures and cannot adjudicate between
+them — because the source reports never say what they count.
+
+**The honest conclusion: this top-down slice validates nothing here.** It is
+recorded so the next person does not spend an afternoon re-deriving it and
+reaching for the same false comfort. The bottom-up figures stand or fall on
+their own inputs, and the verification list in §6 is how they get tested.
 
 ---
 
@@ -160,16 +189,25 @@ $500k/yr contract gets signed by a paramedic service or a hospital.
 The obvious business — sell dispatch software per vehicle — sized honestly:
 
 ```
-  PTS vehicles      580,000 non-urgent trips ÷ (5 trips/veh/day × 250 days)
-                    ≈ 460 vehicles
+  Non-urgent transfers (§2 working mid 580,000 × 80%)   464,000/yr
+  PTS vehicles      464,000 ÷ (5 trips/veh/day × 250 days)
+                    ≈ 371 vehicles
+                    (of which ~186 serve the ~232,000 trips already
+                     on private PTS today — the rest still ride 911)
   Land ambulances   ~1,500 (est.)
   Paratransit + community fleets ~1,000–3,000 (est., incl. contracted taxi)
   ─────────────────────────────────────────────────────────────────────
-  Total addressable fleet          ~3,000 – 5,000 vehicles
+  Total addressable fleet          ~2,900 – 4,900 vehicles
 
   × $100/vehicle/month × 12
-  = $3.6M – $6.0M ARR at 100% penetration
+  = $3.4M – $5.8M ARR at 100% penetration
 ```
+
+> An earlier draft divided the **total** 580,000 transfers rather than the
+> 464,000 non-urgent ones, giving ~460 PTS vehicles and a ~$3.6M–$6.0M ceiling.
+> Correcting it moves the ceiling by about 4% and **changes no conclusion** —
+> which is itself worth noting: the SaaS ceiling is low for structural reasons,
+> not because of a sensitive input.
 
 **At 100% of every eligible vehicle in Ontario.** Realistic 20–30% penetration
 against entrenched incumbents: **$0.7M–$1.8M ARR.** `[M]`
@@ -183,7 +221,7 @@ and it does not justify the clinical and regulatory work this domain demands.
 
 | Model | Basis | Ontario ceiling | Note |
 | --- | --- | --- | --- |
-| Per-vehicle SaaS | $100/veh/mo | **$4–6M** | The trap |
+| Per-vehicle SaaS | $100/veh/mo | **$3.4–5.8M** | The trap |
 | Per-trip transaction | 3–8% of $500M+ services spend | **$15–45M** | Requires being in the flow of funds |
 | Outcome / savings share | % of ALC days + ambulance hours + missed sessions avoided | **$20–60M** | Hardest to sell, highest ceiling, best moat |
 | Payer utility contract | NIHB/NHTG administration + optimisation | **$5–20M** | Single buyer, slow, very sticky |

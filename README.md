@@ -17,11 +17,11 @@ currently holds the research that decides what gets built.
 
 ## The one-paragraph version
 
-Ontario moves somewhere around half a million to seven hundred thousand
-non-urgent patients between facilities every year, and roughly eight in ten of
-those trips are routine. A large share still ride in fully-equipped 911
-ambulances staffed by paramedics, inside a province that spends on the order of
-$2B a year on land ambulance. The non-emergency side of the market is not
+Ontario runs somewhere around half a million to seven hundred thousand
+inter-facility patient transfers every year — trips, not unique people — and
+roughly eight in ten of those transfers are clinically routine. A large share
+still ride in fully-equipped 911 ambulances staffed by paramedics, inside a
+province that spends on the order of $2B a year on land ambulance. The non-emergency side of the market is not
 regulated, not covered by OHIP, and has no single payer — cost lands on
 hospitals, long-term care homes, families, Indigenous Services Canada, and
 municipalities in unconnected pieces. Nobody holds a view of the whole thing.
