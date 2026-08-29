@@ -43,3 +43,11 @@ That missing coordination layer, not another dispatch console, is the product.
 Phase 1 depends on two decisions that are the team's to make, not the
 research's: which beachhead segment to attack first, and whether the product is
 a coordination layer, an operator, or a payer-side utility. See §10.
+
+## Published version
+
+The survey is also published as a readable page:
+<https://claude.ai/code/artifact/748f9af1-5f57-4cf7-9de7-75e11062ca51>
+
+Source for that page is checked in at
+[`docs/ontario-transport-gap.html`](docs/ontario-transport-gap.html).
