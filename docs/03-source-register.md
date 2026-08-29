@@ -12,6 +12,23 @@ those documents, not from the documents themselves.** That is adequate for
 shaping product strategy. It is not adequate for a business case, a board deck,
 a funding application, or anything a third party will rely on.
 
+## Second source: the EMSS repository (August 2026)
+
+`akromi/emergency-medical-support-system` at `a8eb1d9` was reviewed **read-only**
+after the first draft. Its `docs/canada-market-survey.md` is a four-pass survey
+(2026-06-27, updated 06-27, 08-17, 08-18) using multi-source research with
+**adversarial 3-vote claim verification** (2 of 3 refutes kills a claim), which
+records its own refuted claims and one withdrawn attribution in the open.
+
+**It hit the same constraint this survey did** — its second, third and fourth
+passes each record that direct page fetches were blocked by network egress
+policy, so its findings also rest on converging search-index summaries. It grades
+accordingly. Facts taken from it are marked `[AidPost]` below and inherit its
+grading, which is generally better-evidenced than this survey's because its
+sources are named, dated and individually cited.
+
+**Where the two documents disagree, AidPost's wins.**
+
 ## Confidence ratings
 
 - `[H]` **High** — specific figure, named authoritative source, internally consistent
@@ -81,6 +98,37 @@ a funding application, or anything a third party will rely on.
 | PHIPA agent vs. PIPEDA distinction for vendors | `[H]` | IPC Ontario / PHIPA s.2 |
 | Ontario FHIR R4 IGs: Patient Summary, Client & Provider Registry, ODHDR, OLIS, eReferral, OCRE | `[H]` | eHealth Ontario standards |
 
+### From the EMSS survey `[AidPost]`
+
+| Fact | Rating | Note |
+| --- | --- | --- |
+| OADS v4.0 effective 2 Sept 2025, under O. Reg. 257/00 Part V Cl. 11.1 | `[H]` | Mandatory for ASOs, paramedics, EMAs, Base Hospitals |
+| Prehos notice 8 June 2026; service end announced 7 July 2026 | `[H]` | Switch-off itself **announced and uncontradicted, not verified** — every source is June-dated |
+| ~22 Ontario paramedic services displaced; ~$10M owed | `[H]` | Trade press; MOH sourced paper forms, adjusted reporting timelines |
+| Prepaid fees became unsecured claims (~$29K at Sault Ste. Marie); recovery unknown | `[H]` | |
+| Replacement forced iPad→laptop hardware refresh | `[H]` | |
+| Sault Ste. Marie → Interdev/iMedic + HGlobal, ~$63K/yr + ~$33K one-time | `[H]` | Two vendors to replace one |
+| No published roster of the ~22 exists | `[H]` | Searched repeatedly; a genuine absence. Renfrew, Parry Sound, Nipissing are documented customers but **only from 2018–2024** — not established as among the ~22 |
+| ImageTrend delivered OADS v4.0 dataset March 2025; Middlesex-London Aug 2025; Cochrane District on Elite | `[H]` compliance / `[M]` deployment | "Growing number of services" is vendor language |
+| ESO acquired Toronto-based Interdev March 2022; iMedic cloud SaaS with CADLink dispatch | `[H]` | |
+| Siren is BC's official provincial ePCR, mandatory, store-and-sync ~5 min | `[H]` | **No Ontario Siren deployment evidenced** |
+| ZOLL emsCharts NOW: offline create + chart lock, encrypted local store, MCI triage colour (v10.0), claimed FHIR | `[M-H]` | FHIR claim rests on a third-party profile, not ZOLL primary docs |
+| Traumasoft: US private-EMS ops platform (CAD+ePCR+billing+fleet), founded 2006, ~200 customers, NEMSIS | `[H]` | **No Canadian footprint evidenced**; a Capterra `.ca` listing is not a deployment |
+| Stryker is **not** an ePCR vendor — HealthEMS went to Sansio/Volaris | `[H]` | Best-sourced item in their survey: dated primary transactions |
+| Records custody after cloud-ePCR shutdown is undocumented | `[H]` as an open question | Their sharpest unanswered question; inherited by any transport product |
+
+### From the EMSS codebase (read-only inspection)
+
+| Fact | Rating |
+| --- | --- |
+| ~45,500 LOC, 195 TS/TSX files, 73 docs, 61 remote branches, HEAD `a8eb1d9` | `[H]` — counted directly |
+| `core/src/ehr/ontario.ts` implements PCR `Patient/$match`, OHIP identifier systems, ATNA AuditEvent | `[H]` — read directly |
+| `packages/ehr-gateway` carries ONE ID auth, Ontario Health gateway, mock gateway | `[H]` — file listing |
+| `core/src/sync/oplog.ts` is Lamport-clocked, total-order, per-path/per-item resolution, not LWW | `[H]` — read directly |
+| `packages/sync-service` is multi-tenant with OIDC, tenant store, retention, audit stores, Postgres + SQLite | `[H]` — file listing |
+| **No CAD, AVL, crew scheduling, or allocation engine exists** | `[H]` — absence confirmed across `src/` and `packages/` |
+| Repository licence is proprietary, all rights reserved | `[H]` |
+
 ### Competitors
 
 | Fact | Rating |
@@ -128,3 +176,17 @@ a funding application, or anything a third party will rely on.
 12. Ontario Health atHome / community support services transportation budget.
 13. WSIB and private-insurer medical transportation spend in Ontario.
 14. Hope Air Ontario volumes.
+
+**Inherited from the EMSS survey's open questions, relevant here:**
+
+15. **Confirm the OADS exemption in writing.** This survey's most valuable
+    regulatory claim — that non-urgent patient transfer is outside the Ambulance
+    Act and therefore outside OADS — is an inference from two separately sourced
+    facts, not a statement anyone has confirmed. **Get a legal opinion before it
+    becomes load-bearing in a pitch or a funding application.**
+16. Whether the Prehos platform actually went dark on 7 July 2026, and where the
+    other ~20 services went. Routes that would answer it: municipal/DSSAB council
+    agendas June–September 2026, the Ontario Association of Paramedic Chiefs, or
+    an FOI to the Ministry of Health. **None is a web search.**
+17. Ontario's provincial eACR data flow under OADS v4.0, and Ornge's own
+    documentation system — both still uncovered by either survey.

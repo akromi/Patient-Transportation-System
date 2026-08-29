@@ -13,6 +13,7 @@ currently holds the research that decides what gets built.
 | [`docs/01-market-survey.md`](docs/01-market-survey.md) | The full survey: system map, demand drivers, payer flows, regulation, competitors, whitespace |
 | [`docs/02-opportunity-model.md`](docs/02-opportunity-model.md) | Bottom-up sizing with every assumption written down and auditable |
 | [`docs/03-source-register.md`](docs/03-source-register.md) | Every source used, with a confidence rating and a verification to-do list |
+| [`docs/04-emss-reuse-assessment.md`](docs/04-emss-reuse-assessment.md) | Read-only review of the EMSS codebase: what actually carries over, what does not, and why the architectural thesis doesn't |
 
 ## The one-paragraph version
 
@@ -26,12 +27,27 @@ hospitals, long-term care homes, families, Indigenous Services Canada, and
 municipalities in unconnected pieces. Nobody holds a view of the whole thing.
 That missing coordination layer, not another dispatch console, is the product.
 
+## EMSS — resolved
+
+EMSS is **AidPost** (`akromi/emergency-medical-support-system`), an offline-first
+PWA for casualty care and transport documentation — reviewed **read-only** at
+commit `a8eb1d9`; nothing in that repository was modified.
+
+The survey's original §08 assumed EMSS meant a dispatch/CAD system. **It does
+not** — there is no CAD, AVL, crew scheduling or allocation engine in it. What
+does carry over is more useful than what was assumed: a working **Ontario Health
+Provincial Client Registry FHIR adapter** with ONE ID auth and ATNA audit, a
+Lamport-clocked conflict-aware sync engine, a multi-tenant backend, and PHIPA-grade
+security primitives. What does *not* carry over is the product thesis — AidPost's
+"no backend" differentiator is the opposite of what a transport coordination
+layer needs. See `docs/04-emss-reuse-assessment.md`.
+
+AidPost also carries its own four-pass Canadian market survey, better-evidenced
+than this one. Its findings are merged into the survey and marked `[AidPost]`;
+where the two disagree, theirs wins.
+
 ## Working assumptions flagged for the team
 
-- **"EMSS experience" is unconfirmed in this repo.** The survey assumes it means
-  prior work on an emergency medical services system (CAD / dispatch / AVL /
-  ePCR / crew scheduling). Section 8 maps what carries over and what does not.
-  Correct this before Phase 1.
 - **Figures came from search-result summaries, not fetched primary documents.**
   Network egress restrictions during this research blocked direct retrieval of
   ICES, PubMed, ontario.ca, CIHI and Ombudsman sources. Every number carries a

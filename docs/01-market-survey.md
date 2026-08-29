@@ -7,6 +7,16 @@
 > search-result summaries because direct document retrieval was blocked during
 > research. See [`03-source-register.md`](03-source-register.md) before quoting
 > any of them externally.
+>
+> **Revision 2 — reconciled with the EMSS codebase (August 2026).** The EMSS
+> repository (`akromi/emergency-medical-support-system`, product name
+> **AidPost**) was reviewed read-only after this survey was first written. It
+> contains its own four-pass Canadian market survey with adversarial claim
+> verification. Findings from it are merged below and marked `[AidPost]`. Where
+> the two disagree, **AidPost's document wins** — it was researched against
+> named, dated sources with a refutation process, and it records its own refuted
+> claims in the open. §08 of this survey was **wrong and has been rewritten**;
+> see [`04-emss-reuse-assessment.md`](04-emss-reuse-assessment.md).
 
 ---
 
@@ -48,7 +58,18 @@ positioned as Canada's largest NEPT brand — has been buying up regional
 operators, including Priority Patient Transfer Service in Ottawa. A neutral
 coordination layer gets harder to build every year that consolidation runs.
 
-**6. The obvious product is the wrong product.** Per-vehicle dispatch SaaS at
+**6. Ontario's EMS software market just had a vendor collapse.** `[AidPost]`
+Quebec ePCR vendor **Prehos** notified customers on **8 June 2026** that it was
+entering creditor protection and would cease operating by **7 July 2026**, owing
+~$10M. **~22 Ontario paramedic services** were displaced on under a month's
+notice; some reverted to paper while the Ministry of Health sourced paper forms
+and adjusted reporting timelines. Prepaid fees became unsecured claims, and at
+least one service had to buy new hardware because the replacement would not run
+on its existing tablets. **The displaced buyers migrated cloud-to-cloud** — and
+it took two vendors to replace one. Two lessons: vendor-continuity risk is live
+and locally felt, and buyers under pressure still choose backend platforms.
+
+**7. The obvious product is the wrong product.** Per-vehicle dispatch SaaS at
 US benchmark pricing ($50–$200/vehicle/month) against Ontario's addressable
 fleet yields roughly **$4M–$7M ARR at full penetration** — a decade of work for
 a rounding error. The value is not in selling consoles to operators. It is in
@@ -230,6 +251,7 @@ Three properties make this the crux of the business model:
 | Instrument | Bearing on the product |
 | --- | --- |
 | **Ambulance Act** | Governs 911 land ambulance and certification. **Does not reach non-urgent PTS.** |
+| **OADS v4.0** `[AidPost]` | Ontario Ambulance Documentation Standards, **effective 2 September 2025**, empowered under **O. Reg. 257/00, Part V, Cl. 11.1** of the Ambulance Act. Mandatory for how Ambulance Service Operators, paramedics, EMAs and Base Hospitals document and submit patient-care reports, paper and electronic alike. **The single biggest barrier to official Ontario EMS adoption** — and the reason incumbents who already ship OADS-compliant datasets are hard to dislodge. |
 | **PHIPA** | The controlling constraint. A vendor handling PHI *for* a custodian is an **agent** and inherits obligations; operating on its own account puts it under PIPEDA instead. Agent status must be designed for deliberately, not stumbled into. |
 | **Bill 60 / Your Health Act 2023** | Creates Integrated Community Health Services Centres — the licensing basis for the 57 new centres generating new trips. |
 | **AODA** | Accessibility standards for transportation and for the digital product. Non-negotiable. |
@@ -240,6 +262,21 @@ Three properties make this the crux of the business model:
 **Read:** PHIPA agent design and FHIR-native architecture are not compliance
 overhead to be retrofitted — they are the two decisions that determine whether
 this product can ever sit inside a hospital's workflow.
+
+**And the most valuable regulatory fact in this document:** because non-urgent
+patient transfer sits outside the Ambulance Act, it also sits **outside OADS**.
+A transport product that never becomes the 911 land-ambulance record of care
+does not have to cross the compliance moat that protects ImageTrend and
+ESO/Interdev. The same absence of regulation that makes this market chaotic to
+operate in makes it **cheap to enter with software**.
+
+⚠️ **That exemption is conditional, and product surface S1 is where it gets
+tested.** Right-sizing triage decides whether a patient needs a 911 ambulance.
+The nearer that moves to diverting emergency resources, the nearer it moves to
+both the regulated boundary and a clinical-decision claim. Keep the system
+displaying and recording clinician decisions, never deriving them — the
+distinction AidPost's own survey records getting wrong in draft, with less money
+at stake than here.
 
 ---
 
@@ -266,7 +303,32 @@ this product can ever sit inside a hospital's workflow.
 | **Rideshare healthcare** | Uber Health — live in Ontario (Toronto, Brampton and beyond), rider needs no app, multilingual, 3-year Hope Air partnership from Aug 2024 | **High for ambulatory only.** Cannot do stretcher, bariatric, oxygen, cognitive-impairment escort, or clinical handover. Will take the easy top of the market and leave the hard, high-acuity margin. |
 | **Canadian transit tech** | Spare Labs (microtransit/paratransit/NEMT SaaS), Pantonium (Toronto; real-time self-adjusting routing; $2M SDTC), Blaise (Montreal) | **Medium and interesting.** Strong optimisation, municipal channel, Canadian data residency — but transit-agency shaped, not clinically shaped. Partner or compete-adjacent. |
 
-### 6.3 The whitespace, stated plainly
+### 6.3 The adjacent set this survey originally missed `[AidPost]`
+
+Ontario's **clinical documentation** vendors are not transport competitors, but
+they hold the hospital and paramedic-service relationships a transport product
+needs, and they are the likeliest parties to extend sideways into it.
+
+| Player | Ontario position | Relevance |
+| --- | --- | --- |
+| **ImageTrend** | Delivered the **OADS v4.0 dataset in March 2025**; named customers include **Middlesex-London** (Aug 2025) and **Cochrane District** on Elite | The compliance moat, demonstrably crossed. Markets a Health Information Hub for EMS↔hospital exchange |
+| **ESO / Interdev — iMedic** | ESO acquired Toronto-based **Interdev** in March 2022; cloud SaaS ePCR with **CADLink real-time dispatch**; picking up Prehos migrations | **The ESO product on the ground in Ontario.** CADLink means dispatch integration already exists in the incumbent stack |
+| **ESO / Medusa — Siren** | BC's **official provincial ePCR**, mandatory for every patient encounter; historically Nova Scotia. **No Ontario deployment evidenced** | Offline create + ~5-min sync — proof that offline capture alone is not a differentiator |
+| **ZOLL — emsCharts / RescueNet** | Closest commercial feature set surveyed: ePCR depth, offline chart capture and lock, MCI triage-colour, claimed FHIR. **No evidenced Canadian deployment** | The most plausible new entrant. RescueNet bundles CAD + ePCR + billing |
+| **HGlobal** | Community paramedicine only; Sault Ste. Marie | Community paramedicine is directly adjacent to non-urgent transport |
+| **Traumasoft** | US private-EMS **operations** platform — CAD, ePCR, billing, scheduling, fleet in one. Founded 2006, ~200 customers, aimed at **private EMS and NEMT operators**. NEMSIS, not OADS. **No Canadian footprint evidenced** | Correction to §6.2: this is not a US NEMT point solution but the closest existing product to an integrated transport operations platform. Its ~200-customer scale is evidence the category supports a real business — in a market with a broker rail |
+| ~~Prehos~~ | **Collapsed 2026.** ~22 Ontario services displaced | See §1 finding 6 |
+
+**Two things this changes.** Ontario's ePCR field is **more concentrated** than a
+list of vendor names suggests — effectively ImageTrend and ESO/Interdev, with
+OADS rather than feature count as the gate. And **records custody after a vendor
+shutdown is an unanswered question in this market**: Ontario services carry
+statutory retention and production duties, yet nothing in AidPost's three
+research passes describes how a service retrieves its history from a
+switched-off cloud. Any transport product holding trip and clinical records
+inherits that question and should answer it in its architecture.
+
+### 6.4 The whitespace, stated plainly
 
 Nobody occupies the intersection of:
 
@@ -319,29 +381,71 @@ Low near-term revenue; the highest-leverage asset if regulation ever lands.
 
 ---
 
-## 8. What carries over from EMSS — and what does not
+## 8. What carries over from EMSS — corrected
 
-> ⚠️ **Assumption.** This repository contains no EMSS code and the term is not
-> defined anywhere in it. Taken to mean prior work on an emergency medical
-> services system. **Confirm before Phase 1 planning.**
+> **Revision 2.** The first version of this section was written before the EMSS
+> codebase was available and **assumed EMSS meant a dispatch/CAD system**. That
+> assumption was wrong, and every row of the original table was wrong with it.
+> Full read-only assessment: [`04-emss-reuse-assessment.md`](04-emss-reuse-assessment.md).
 
-| Carries over | Needs rebuilding |
-| --- | --- |
-| Dispatch/CAD core, assignment logic | Scheduled/recurring demand — NEPT is largely *booked*, not stochastic |
-| AVL, telematics, real-time ETA | Multi-tenant provider marketplace, not one agency's fleet |
-| Crew scheduling, shift and certification tracking | Multi-payer billing, eligibility, split settlement |
-| ePCR and clinical documentation | Patient- and family-facing experience — EMS has no consumer surface |
-| Response-time modelling, coverage optimisation | Acuity *down*-triage — EMS triages severity up, NEPT must triage cost down safely |
-| Integration discipline with CACC/hospital | FHIR R4 against Ontario provincial registries |
-| Operational rigour, audit culture, safety posture | Consent and PHIPA agent model for a non-custodian vendor |
+**EMSS is AidPost** — an offline-first PWA for casualty care and transport
+documentation. ~45,500 LOC, 195 TS/TSX files, 73 docs. Field responders capture
+identity, injuries on an anatomical body chart, vitals and treatments, then hand
+over to a hospital as an HL7 FHIR R4 bundle. Multilingual EN/FR/AR/FA/ES with RTL.
 
-**The honest warning:** an EMS system is optimised for *stochastic, urgent,
-single-payer, incident-centred* work. Non-emergency patient transport is
-*scheduled, routine, multi-payer, patient-centred*. Reusing the EMS mental model
-wholesale is the most likely way this product goes wrong. Reuse the engine;
-rewrite the assumptions.
+**There is no dispatch system in it.** No CAD, no AVL or telematics, no crew
+scheduling, no response-time or coverage modelling, no allocation engine. The
+original table claimed all of those carried over. They do not exist.
 
----
+### What actually carries over
+
+| Asset | Where | Why it matters here |
+| --- | --- | --- |
+| **Ontario Health EHR integration** | `core/src/ehr/ontario.ts`, `packages/ehr-gateway` | Provincial Client Registry `Patient/$match`, OHIP identifier systems, FHIR match-grade scoring, **ATNA AuditEvent on every access**, ONE ID auth, mTLS. This survey recommended building FHIR-native against the provincial registries — **it is already built** |
+| **Provider-agnostic gateway port** | `core/src/ehr/port.ts` | Framework-free `EhrGateway` seam with a typed error taxonomy; swapping provinces is a wiring change |
+| **Conflict-aware sync** | `core/src/sync/oplog.ts` | Append-only ops with Lamport clocks folded in total canonical order — byte-identical state across replicas regardless of arrival order, per-path and per-item-id resolution, conflicts reported not silently lost. Directly reusable for driver devices that go offline in rural and Northern Ontario |
+| **Multi-tenant backend** | `packages/sync-service` | Tenant context and store, OIDC, ops store, blob store, retention, admin and EHR audit stores, metrics, OpenAPI export; Postgres and SQLite |
+| **PHIPA-relevant primitives** | app + core | AES-256-GCM vault, encrypted backups, operator roster, RBAC-lite, step-up PIN, **tamper-evident audit log**, minimum-necessary masking with timed audited break-glass, propagating erasure |
+| **i18n with RTL** | `src/i18n.tsx` | Loadable JSON language packs, no code release to add a language |
+| **PWA-on-existing-hardware** | architecture | A procurement argument, not an engineering one — see the forced hardware refresh in §6.3 |
+
+### What has to be built new
+
+Dispatch and assignment, ETA prediction, route and pooling optimisation, fleet
+and crew management, booking workflows, a provider marketplace, multi-payer
+eligibility and settlement, and every patient- and family-facing surface. **That
+is most of the product.**
+
+### The thesis does not transfer — and this is the important part
+
+AidPost's commercial differentiator, sharpened deliberately across four survey
+passes, is **"no backend, no sync server, no vendor relationship."** Its own
+fourth pass retired "works offline" as a headline because Siren, ZOLL emsCharts
+NOW and AmbuPad all do offline capture; what remains distinctive is the *absence*
+of a server, an account and a vendor.
+
+**A transport coordination layer cannot be built that way.** Matching a request
+to a provider, settling across payers and holding shared fleet state are
+inherently multi-party and networked. A booking exchange requires a server by
+definition. The product §10 recommends is precisely the shape AidPost defines
+itself against.
+
+**Reuse the engine. Do not reuse the pitch.**
+
+### The strategic tension, stated plainly
+
+AidPost's own `commercialization-index.md` scores **Official EMS
+(provincial/municipal)** at ★ fit, ★ accessibility, heavy regulatory load,
+12–24+ months — "the biggest prize but a fortress" — and recommends the
+humanitarian/disaster path instead.
+
+A patient transportation product is **not** that fortress: outside the Ambulance
+Act, outside OADS, documentation-and-logistics rather than SaMD (§5). It is a
+third lane. But it is still Ontario health-system selling with
+broader-public-sector procurement, it is a second front for the same small team,
+and its most valuable surface (S1 right-sizing) is the one that walks back
+toward the regulated boundary. **Those are resourcing and appetite decisions,
+not research findings.**
 
 ## 9. Risks
 
@@ -357,6 +461,10 @@ rewrite the assumptions.
 | Municipal paratransit is politically protected | Medium | Integrate, never displace; position as capacity relief |
 | Regulation never arrives | Medium | Never make S7 load-bearing |
 | Key figures are 2009-vintage | Medium | Verification list in the source register — do this before fundraising |
+| **S1 triage drifts into regulated / clinical-decision territory** | **High** | Display and record clinician decisions; never derive them. The OADS exemption and the documentation-tool intended use both depend on this line holding |
+| **Records custody after vendor failure** `[AidPost]` | Medium | Ontario services carry statutory retention duties, and nothing in the Prehos episode describes retrieving history from a switched-off cloud. Answer it in the architecture — exportable, customer-held records — before a buyer asks |
+| **Second front for the same team** | Medium | AidPost's chosen path is humanitarian/disaster. A transport product is a different market, buyer and architecture. Resourcing decision, not a research finding |
+| **Buyers under pressure still choose backend incumbents** `[AidPost]` | Medium | The one documented Prehos migration went cloud-to-cloud and took two vendors. Do not assume an architecture-led pitch wins; lead with the outcome metric |
 
 ---
 
@@ -389,6 +497,20 @@ Because it is the only segment where all five conditions hold at once:
 Then expand: **S4 discharge flow** (sell ALC days back to hospitals) → **S3
 neutral exchange** (before consolidation closes it) → **S6 Northern/Indigenous**
 (NIHB's $166M growing 20% a year) → **S5 settlement** as the long-term moat.
+
+### One caution from the EMSS survey
+
+The Prehos collapse is the closest thing this market has to a natural
+experiment, and it cuts against architectural pitches. Twenty-two Ontario
+services were displaced by a **commercial** failure — not an outage — and the one
+documented migration went **cloud to cloud**, needing two vendors to replace one,
+at ~$63K/yr plus ~$33K one-time. Buyers who had just been burned by vendor
+continuity risk still bought another backend platform.
+
+**Read:** sell the outcome, not the architecture. For the dialysis wedge that
+means missed treatments avoided — a number the buyer already tracks and already
+answers for. Data ownership and continuity are a strong second argument and a
+poor first one.
 
 **The two open decisions in §10 are not research questions.** Whether to be a
 coordination layer, an operator, or a payer-side utility — and which wedge to
