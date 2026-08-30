@@ -324,6 +324,8 @@ footer strong{color:var(--ink-2)}
   <div class="sec-head"><div class="sec-num">02</div><h2>Unit economics</h2></div>
   <div class="body">
     <p>One wheelchair-accessible vehicle, single operator, at mature utilisation. The design decision that carries the model is <strong>pooling dialysis runs</strong> — carrying two or three wheelchair patients per trip to the same unit is what moves a vehicle from ~5 billable legs a day to ~8.</p>
+    <p>The base case is <strong>dialysis-anchored and prices every leg at the $85 contract rate</strong>. Ad-hoc discharge work bills ~$150 a trip and would earn ~10% more, but it is unscheduled and unpoolable, so it is treated as upside rather than blended in.</p>
+    <p class="corr"><strong>Corrected in review.</strong> An earlier draft quoted a "$120 blended rate" alongside the $150,000 figure. The two were inconsistent — $120 across 8 legs a day gives $212,160 — which made the trip mix unauditable. The blended rate is gone; the base case now prices one way.</p>
   </div>
 
   <div class="block">
@@ -333,7 +335,7 @@ footer strong{color:var(--ink-2)}
       <table>
         <thead><tr><th>Item</th><th>Modelled</th><th>Basis</th></tr></thead>
         <tbody>
-          <tr><td><strong>Revenue</strong></td><td class="n" style="color:var(--accent)"><strong>$150,000</strong></td><td>8 pooled legs/day at $85 contract, or 5 ad-hoc at $150</td></tr>
+          <tr><td><strong>Revenue</strong></td><td class="n" style="color:var(--accent)"><strong>$150,280</strong></td><td>8 pooled dialysis legs/day × $85 × 260 days × 85%</td></tr>
           <tr><td>Operator wage + burden</td><td class="n">$61,200</td><td>$21/hr + ~22% burden + 15% relief coverage</td></tr>
           <tr><td>Vehicle lease</td><td class="n">$19,200</td><td>~$1,600/month</td></tr>
           <tr><td>Fuel</td><td class="n">$8,680</td><td>40,000 km @ 14 L/100km @ $1.55/L</td></tr>
@@ -345,6 +347,27 @@ footer strong{color:var(--ink-2)}
         </tbody>
       </table>
     </div>
+  </div>
+
+  <div class="block">
+    <p class="block-title">Stretcher tier — a different business</p>
+    <p class="block-sub">Modelled separately · <strong>not</strong> included in the three-year projection</p>
+    <div class="tw" style="margin:0; box-shadow:none">
+      <table>
+        <thead><tr><th>Item</th><th>Wheelchair van</th><th>Stretcher van</th></tr></thead>
+        <tbody>
+          <tr><td>Crew</td><td class="n">1 operator</td><td class="n"><strong>2 attendants</strong></td></tr>
+          <tr><td>Trips per day</td><td class="n">8 pooled legs</td><td class="n">4 — cannot be pooled</td></tr>
+          <tr><td>Rate</td><td class="n">$85/leg</td><td class="n">~$350/trip</td></tr>
+          <tr><td><strong>Revenue</strong></td><td class="n">$150,280</td><td class="n">$309,400</td></tr>
+          <tr><td>Crew cost</td><td class="n">$61,200</td><td class="n"><strong>$122,400</strong></td></tr>
+          <tr><td>Lease, fuel, maintenance, insurance, licensing</td><td class="n">$40,963</td><td class="n">$51,546</td></tr>
+          <tr><td><strong>Total direct</strong></td><td class="n">$102,163</td><td class="n">$173,946</td></tr>
+          <tr><td><strong>Contribution</strong></td><td class="n" style="color:var(--accent)"><strong>$48,117</strong></td><td class="n" style="color:var(--accent)"><strong>$135,454</strong></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="note">A stretcher vehicle contributes ~2.8× a wheelchair van despite double the labour, because it bills roughly 2× and cannot be undercut by rideshare. The catch is on the demand side: stretcher work is hospital-discharge driven, so it is <strong style="color:var(--ink-2)">ad-hoc and unschedulable</strong> — precisely the utilisation risk the phasing exists to avoid. A strong second phase and a poor first one. All stretcher figures are modelled, not quoted.</p>
   </div>
 
   <div class="callout warn">
@@ -386,7 +409,7 @@ footer strong{color:var(--ink-2)}
     <table>
       <thead><tr><th></th><th>Year 1</th><th>Year 2</th><th>Year 3</th></tr></thead>
       <tbody>
-        <tr><td><strong>Vehicles (avg)</strong></td><td class="n">5</td><td class="n">9</td><td class="n">13</td></tr>
+        <tr><td><strong>Wheelchair vehicles (avg)</strong></td><td class="n">5</td><td class="n">9</td><td class="n">13</td></tr>
         <tr><td>Average utilisation</td><td class="n">55%</td><td class="n">72%</td><td class="n">85%</td></tr>
         <tr><td><strong>Revenue</strong></td><td class="n">$485,000</td><td class="n">$1,143,500</td><td class="n">$1,950,000</td></tr>
         <tr><td>Direct costs</td><td class="n">$495,000</td><td class="n">$908,000</td><td class="n">$1,328,000</td></tr>
@@ -395,6 +418,12 @@ footer strong{color:var(--ink-2)}
         <tr><td><strong>EBITDA</strong></td><td class="n" style="color:var(--signal)"><strong>−$300,000</strong></td><td class="n" style="color:var(--signal)"><strong>−$102,000</strong></td><td class="n" style="color:var(--accent)"><strong>+$242,000</strong></td></tr>
       </tbody>
     </table>
+  </div>
+
+  <div class="callout warn">
+    <h4>This models a wheelchair-only fleet</h4>
+    <p><strong>Corrected in review.</strong> An earlier draft priced all 13 vehicles at the single-operator rate while the service model proposed stretcher vehicles needing <strong>two</strong> attendants. Four such vehicles would add ~$245,000 of labour — <strong>more than the entire stated year-three EBITDA.</strong></p>
+    <p>Stretcher capability is now modelled separately in §02 and is a deliberate later decision, not an assumed part of this plan.</p>
   </div>
 
   <div class="callout warn">

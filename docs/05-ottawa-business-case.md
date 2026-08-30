@@ -66,10 +66,27 @@ arrive and leave in shift blocks at fixed times to fixed addresses. Carrying 2�
 wheelchair patients per run is the single largest lever on unit economics in this
 document — it is what moves a vehicle from ~5 billable legs a day to ~8.
 
-**Bilingual from day one.** Not a differentiator to add later: Ottawa is a
-designated area under the French Language Services Act and Montfort is the
-province's francophone teaching hospital. Every operator-facing tool and every
-crew rotation must work in French.
+> ⚠️ **The three-year projection in §6 models a wheelchair-only fleet.** Tier 2
+> stretcher vehicles need **two** attendants, so their labour cost is roughly
+> double a wheelchair van's — and an earlier draft priced all 13 vehicles at the
+> single-operator rate, which would have overstated year-three EBITDA by more
+> than its entire value. Stretcher economics are modelled separately in §4.3 and
+> are **not** included in the projection. Adding stretcher capability is a
+> deliberate later decision, not an assumed part of the plan.
+
+**Bilingual capability from day one — but understand *why*.** Ottawa is a
+designated area under the French Language Services Act, and Montfort is the
+province's francophone teaching hospital. **The Act binds government and
+designated public-service agencies, not a private transport operator directly.**
+An operator's French obligation flows through its *contract* with a designated
+entity.
+
+The practical conclusion is unchanged and the reasoning is now correct: if you
+want Montfort or TOH business, **expect French capability to be a contract
+requirement**, and price crew rotations accordingly. It is contractually
+near-certain, not statutorily automatic — and the scope of health-transport
+designation is still unconfirmed in the source register. Do not build a labour
+plan around it as a legal absolute before that scope is established.
 
 ---
 
@@ -82,20 +99,28 @@ long-distance modelled near $299 base + $2.95/km; wait time $60/hr for wheelchai
 $170/hr for stretcher; add-ons for same-day ($95), after-hours ($75), weekend
 ($65), oxygen ($30), stairs ($45–140).
 
-Contract rates run below rack rate. Modelled:
+Contract rates run below rack rate. **The base case is dialysis-anchored and
+prices every leg at the contract rate** — ad-hoc work at rack rate is upside, not
+assumed:
 
 ```
-  Contracted dialysis leg (pooled)        $85
-  Ad-hoc discharge / clinic trip         $150
-  Blended                                $120 per billable leg
+  Contracted dialysis leg (pooled)             $85
+  Pooled legs per vehicle per day                8
+  Operating days                          260/year
+  Mature utilisation                           85%
 
-  Pooled dialysis run       8 billable legs/day
-  Ad-hoc work               5 trips/day
-  Operating days                    260/year
-  Mature utilisation                    85%
-
-  Mature revenue per vehicle    ≈ $150,000/year
+  8 × 260 × 0.85 × $85       =  $150,280/year  ≈ $150,000
 ```
+
+**Upside not in the base case:** ad-hoc discharge and clinic work bills ~$150 a
+trip. A vehicle running 5 ad-hoc trips a day at that rate earns ~$165,750 —
+about 10% more — but that work is unscheduled, unpoolable and unpredictable, so
+it is left out of the plan rather than blended in.
+
+> ⚠️ **An earlier draft quoted a "$120 blended rate" alongside this $150,000
+> figure. The two were inconsistent** — a $120 blended rate across 8 legs a day
+> gives $212,160, not $150,000 — and the mix was therefore unauditable. The
+> blended rate has been removed; the base case now prices one way.
 
 ### Direct cost per vehicle per year
 
@@ -118,6 +143,33 @@ Contract rates run below rack rate. Modelled:
 > full or empty. Direct cost is ~90% fixed per vehicle. **Utilisation is the
 > entire business.** A van at 55% utilisation loses money; the same van at 85%
 > makes $48K.
+
+### 4.3 Stretcher tier — a different business, modelled separately
+
+Not in the §6 projection. Shown so the difference is explicit rather than
+implied.
+
+| Item | Wheelchair van | Stretcher van |
+| --- | ---: | ---: |
+| Crew | 1 operator | **2 attendants** |
+| Trips per day | 8 pooled legs | 4 (stretchers cannot be pooled) |
+| Rate | $85/leg contract | ~$350/trip |
+| **Revenue** | **$150,280** | **$309,400** |
+| Crew cost | $61,200 | **$122,400** |
+| Lease | $19,200 | $25,200 |
+| Fuel · maintenance · insurance · licensing | $21,680 | $26,180 |
+| **Total direct** | **$102,163** | **$173,946** |
+| **Contribution** | **$48,117** | **$135,454** |
+
+**A stretcher vehicle contributes ~2.8× a wheelchair van despite double the
+labour**, because it bills roughly 2× the revenue and cannot be undercut by
+rideshare. The catch is on the demand side: stretcher work is hospital-discharge
+driven, which is **ad-hoc and unschedulable** — precisely the utilisation risk
+§3 exists to avoid. It is a strong second phase and a poor first one.
+
+*(All stretcher figures are modelled at `[L]` confidence; the $350 trip rate is
+inferred from the observed "$500+ with paramedic support" ceiling and the
+wheelchair rack rate, not quoted.)*
 
 ---
 

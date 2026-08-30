@@ -414,11 +414,18 @@ platform can plausibly hold a meaningful share of it.
   under a different health system, a different insurer and different vehicle
   rules. Interprovincial trips are not an edge case here; they are routine.
 
-### 7.5 Bilingual service is a requirement, not a feature
+### 7.5 Bilingual service is a contract requirement in practice
 
 Ottawa is a designated area under Ontario's **French Language Services Act**, and
-**Hôpital Montfort** is the province's francophone teaching hospital. Health
-services delivered here are expected to be available in French.
+**Hôpital Montfort** is the province's francophone teaching hospital.
+
+⚠️ **Be precise about the mechanism.** The Act binds government and designated
+public-service agencies — **not a private transport operator directly**. A
+vendor's French obligation flows through its *contract* with a designated
+entity. So the practical expectation holds (win Montfort or TOH work and expect
+French capability in the contract), but it is **contractually near-certain
+rather than statutorily automatic**, and the designation scope for health
+transport is still unconfirmed in the source register.
 
 Most patient-transfer operators do not document bilingual capability. Any product
 built on the EMSS core inherits **EN/FR with loadable language packs already

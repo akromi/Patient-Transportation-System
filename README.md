@@ -68,6 +68,19 @@ a coordination layer, an operator, or a payer-side utility. See §12.
 | [Ontario's Transport Gap](https://claude.ai/code/artifact/748f9af1-5f57-4cf7-9de7-75e11062ca51) — the survey | [`docs/ontario-transport-gap.html`](docs/ontario-transport-gap.html) |
 | [Ottawa Service Business Case](https://claude.ai/code/artifact/47a03ec4-6909-4793-bdf8-0432118f1006) | [`docs/ottawa-business-case.html`](docs/ottawa-business-case.html) |
 
+## PDFs
+
+Both studies render to print-ready PDFs in [`pdf/`](pdf/):
+
+```bash
+python3 scripts/build-pdfs.py
+```
+
+Headless Chromium prints the `docs/*.html` pages with a print stylesheet (Letter,
+light theme forced, tables unclipped, logical units kept off page breaks). Note
+that this sandbox blocks Google Fonts, so locally-built PDFs fall back to system
+faces; the published web pages render the intended typography.
+
 ## City deep-dives
 
 Survey §7 covers **Ottawa**, §8 covers **Toronto**. The short version: Ottawa's
