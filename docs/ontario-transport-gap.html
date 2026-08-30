@@ -1,0 +1,679 @@
+<title>Ontario's Transport Gap</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap">
+<style>
+:root{
+  --ground:#F4F6F7; --surface:#FCFCFB; --surface-2:#EDF1F2;
+  --ink:#101A1E; --ink-2:#4C5D64; --ink-3:#7A8B92;
+  --rule:#D9E0E3; --rule-soft:#E6EBED;
+  --accent:#0080A8; --accent-soft:#E3F0F5;
+  --signal:#C4620A; --signal-soft:#F8ECE0;
+  --neutral-mark:#9AAAB1;
+  --shadow:0 1px 2px rgba(16,26,30,.05), 0 8px 24px -12px rgba(16,26,30,.12);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --ground:#0E1417; --surface:#161F23; --surface-2:#1C272C;
+    --ink:#E6EDF0; --ink-2:#9FB0B7; --ink-3:#78888F;
+    --rule:#26333A; --rule-soft:#1E2A2F;
+    --accent:#2699C0; --accent-soft:#12303C;
+    --signal:#D47C2C; --signal-soft:#33230F;
+    --neutral-mark:#5E717A;
+    --shadow:0 1px 2px rgba(0,0,0,.4), 0 8px 24px -12px rgba(0,0,0,.6);
+  }
+}
+:root[data-theme="dark"]{
+  --ground:#0E1417; --surface:#161F23; --surface-2:#1C272C;
+  --ink:#E6EDF0; --ink-2:#9FB0B7; --ink-3:#78888F;
+  --rule:#26333A; --rule-soft:#1E2A2F;
+  --accent:#2699C0; --accent-soft:#12303C;
+  --signal:#D47C2C; --signal-soft:#33230F;
+  --neutral-mark:#5E717A;
+  --shadow:0 1px 2px rgba(0,0,0,.4), 0 8px 24px -12px rgba(0,0,0,.6);
+}
+
+*{box-sizing:border-box}
+body{
+  background:var(--ground); color:var(--ink);
+  font-family:"Source Serif 4",Georgia,"Times New Roman",serif;
+  font-size:17px; line-height:1.62;
+  -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:1080px; margin:0 auto; padding:0 28px 120px}
+
+/* ── masthead ─────────────────────────────────────── */
+.mast{padding:72px 0 40px; border-bottom:2px solid var(--ink)}
+.eyebrow{
+  font-family:"IBM Plex Mono",ui-monospace,monospace;
+  font-size:11.5px; letter-spacing:.16em; text-transform:uppercase;
+  color:var(--ink-3); display:flex; flex-wrap:wrap; gap:0 14px; align-items:baseline;
+}
+.eyebrow b{color:var(--accent); font-weight:600}
+h1{
+  font-family:Archivo,"Helvetica Neue",Arial,sans-serif;
+  font-size:clamp(38px,6.2vw,68px); line-height:1.02; letter-spacing:-.025em;
+  margin:20px 0 0; text-wrap:balance; max-width:16ch;
+}
+.deck{
+  font-size:clamp(19px,2.2vw,23px); line-height:1.5; color:var(--ink-2);
+  max-width:60ch; margin:22px 0 0;
+}
+.deck strong{color:var(--ink); font-weight:600}
+
+/* ── section scaffolding ──────────────────────────── */
+section{padding:56px 0 0}
+.sec-head{display:flex; gap:20px; align-items:baseline; margin-bottom:8px}
+.sec-num{
+  font-family:"IBM Plex Mono",ui-monospace,monospace;
+  font-size:12px; font-weight:600; color:var(--accent);
+  letter-spacing:.08em; padding-top:6px; flex:none; width:34px;
+  font-variant-numeric:tabular-nums;
+}
+h2{
+  font-family:Archivo,"Helvetica Neue",Arial,sans-serif;
+  font-size:clamp(25px,3.2vw,34px); line-height:1.12; letter-spacing:-.018em;
+  margin:0; text-wrap:balance;
+}
+h3{
+  font-family:Archivo,"Helvetica Neue",Arial,sans-serif;
+  font-weight:600; font-size:16.5px; letter-spacing:-.005em;
+  margin:34px 0 10px; color:var(--ink);
+}
+.body{margin-left:54px; max-width:66ch}
+.body p{margin:0 0 18px}
+.body p:last-child{margin-bottom:0}
+@media (max-width:680px){
+  .sec-head{gap:12px}
+  .sec-num{width:26px}
+  .body{margin-left:0}
+}
+a{color:var(--accent); text-underline-offset:3px}
+
+/* ── full-bleed blocks ────────────────────────────── */
+.block{
+  margin:30px 0 6px; background:var(--surface);
+  border:1px solid var(--rule); border-radius:3px;
+  padding:26px 26px 24px; box-shadow:var(--shadow);
+}
+.block-title{
+  font-family:"IBM Plex Mono",ui-monospace,monospace;
+  font-size:11px; letter-spacing:.15em; text-transform:uppercase;
+  color:var(--ink-3); margin:0 0 4px;
+}
+.block-sub{
+  font-family:Archivo,sans-serif; font-weight:600; font-size:17px;
+  margin:0 0 20px; color:var(--ink); letter-spacing:-.01em;
+}
+.corr{
+  padding:12px 16px; border-radius:3px; background:var(--signal-soft);
+  border-left:3px solid var(--signal); font-size:15.5px; line-height:1.55;
+}
+.corr strong{color:var(--signal)}
+.note{
+  font-family:"IBM Plex Mono",ui-monospace,monospace;
+  font-size:11.5px; line-height:1.6; color:var(--ink-3);
+  margin:18px 0 0; padding-top:14px; border-top:1px solid var(--rule-soft);
+}
+
+/* ── findings grid ────────────────────────────────── */
+.findings{display:grid; grid-template-columns:repeat(auto-fit,minmax(268px,1fr)); gap:1px; background:var(--rule); border:1px solid var(--rule); border-radius:3px; overflow:hidden; margin-top:26px}
+.finding{background:var(--surface); padding:22px 22px 24px; display:flex; flex-direction:column; gap:8px}
+.finding .k{
+  font-family:"IBM Plex Mono",ui-monospace,monospace;
+  font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--accent); font-weight:600;
+}
+.finding h4{
+  font-family:Archivo,sans-serif; font-weight:600; font-size:16px;
+  margin:0; letter-spacing:-.008em; line-height:1.3;
+}
+.finding p{margin:0; font-size:15px; line-height:1.55; color:var(--ink-2)}
+
+/* ── stat row ─────────────────────────────────────── */
+.stats{display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:1px; background:var(--rule); border:1px solid var(--rule); border-radius:3px; overflow:hidden; margin:26px 0 6px}
+.stat{background:var(--surface); padding:18px 18px 20px}
+.stat .v{
+  font-size:29px; letter-spacing:-.03em; line-height:1.05;
+  font-variant-numeric:tabular-nums; color:var(--ink); display:block;
+}
+.stat .v.em{color:var(--accent)}
+.stat .l{
+  font-family:"IBM Plex Mono",ui-monospace,monospace;
+  font-size:11px; line-height:1.5; color:var(--ink-3); margin-top:8px; display:block;
+}
+
+/* ── charts ───────────────────────────────────────── */
+.band{display:flex; gap:2px; height:56px; margin:6px 0 0}
+.band > div{
+  border-radius:2px; display:flex; align-items:center; padding:0 14px;
+  font-family:"IBM Plex Mono",ui-monospace,monospace; font-size:12px; font-weight:600;
+  color:var(--surface); letter-spacing:.02em; min-width:0; overflow:hidden;
+}
+.band .routine{background:var(--signal); flex:80}
+.band .urgent{background:var(--neutral-mark); flex:20; justify-content:flex-end; padding:0 10px}
+.band-key{
+  display:flex; flex-wrap:wrap; gap:6px 20px; margin-top:12px;
+  font-family:"IBM Plex Mono",ui-monospace,monospace; font-size:11.5px; color:var(--ink-2);
+}
+.band-key span{display:flex; align-items:center; gap:7px}
+.sw{width:11px; height:11px; border-radius:2px; flex:none}
+
+.bars{display:flex; flex-direction:column; gap:14px; margin-top:4px}
+.bar-row{display:grid; grid-template-columns:minmax(120px,180px) 1fr; gap:16px; align-items:center}
+.bar-lab{
+  font-family:"IBM Plex Mono",ui-monospace,monospace; font-size:12px;
+  line-height:1.35; color:var(--ink-2); text-align:right;
+}
+.bar-lab em{display:block; font-style:normal; color:var(--ink-3); font-size:10.5px; margin-top:3px}
+.bar-track{position:relative; height:26px; background:var(--surface-2); border-radius:2px}
+.bar-fill{
+  position:absolute; top:0; bottom:0; border-radius:2px;
+  display:flex; align-items:center; justify-content:flex-end; padding-right:9px;
+  font-family:"IBM Plex Mono",ui-monospace,monospace; font-size:11.5px; font-weight:600;
+  color:var(--surface); white-space:nowrap; transition:filter .15s ease;
+}
+.bar-fill.viable{background:var(--accent)}
+.bar-fill.trap{background:var(--neutral-mark)}
+.bar-row:hover .bar-fill{filter:brightness(1.08)}
+.bar-fill .outside{position:absolute; left:calc(100% + 9px); color:var(--ink-2)}
+@media (max-width:640px){
+  .bar-row{grid-template-columns:1fr; gap:5px}
+  .bar-lab{text-align:left}
+}
+.axis{
+  display:flex; justify-content:space-between; margin-top:12px; padding-top:9px;
+  border-top:1px solid var(--rule-soft);
+  font-family:"IBM Plex Mono",ui-monospace,monospace; font-size:10.5px; color:var(--ink-3);
+  font-variant-numeric:tabular-nums;
+}
+
+/* ── tables ───────────────────────────────────────── */
+.tw{overflow-x:auto; margin:26px 0 6px; border:1px solid var(--rule); border-radius:3px; background:var(--surface)}
+table{border-collapse:collapse; width:100%; min-width:600px; font-size:14.5px}
+th{
+  font-family:"IBM Plex Mono",ui-monospace,monospace;
+  font-size:10.5px; letter-spacing:.13em; text-transform:uppercase; color:var(--ink-3);
+  text-align:left; padding:14px 16px; border-bottom:1px solid var(--rule); font-weight:600;
+  white-space:nowrap; background:var(--surface-2);
+}
+td{padding:13px 16px; border-bottom:1px solid var(--rule-soft); vertical-align:top; line-height:1.45; color:var(--ink-2)}
+tr:last-child td{border-bottom:0}
+td strong{color:var(--ink); font-weight:600}
+td.n{font-family:"IBM Plex Mono",ui-monospace,monospace; font-variant-numeric:tabular-nums; font-size:13px; white-space:nowrap}
+.pill{
+  display:inline-block; font-family:"IBM Plex Mono",ui-monospace,monospace;
+  font-size:10px; letter-spacing:.09em; text-transform:uppercase; font-weight:600;
+  padding:3px 8px; border-radius:2px; white-space:nowrap;
+}
+.pill.hi{background:var(--signal-soft); color:var(--signal)}
+.pill.mid{background:var(--surface-2); color:var(--ink-2)}
+.pill.none{background:var(--surface-2); color:var(--ink-3)}
+.pill.ok{background:var(--accent-soft); color:var(--accent)}
+
+/* ── payer map ────────────────────────────────────── */
+.payers{display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:18px; margin-top:4px}
+.payer-col{border:1px solid var(--rule); border-radius:3px; overflow:hidden; background:var(--surface)}
+.payer-col > header{padding:14px 16px; border-bottom:1px solid var(--rule)}
+.payer-col.reg > header{background:var(--accent-soft)}
+.payer-col.unreg > header{background:var(--signal-soft)}
+.payer-col h4{
+  font-family:Archivo,sans-serif; font-weight:600; font-size:14px; margin:0;
+  letter-spacing:-.005em;
+}
+.payer-col.reg h4{color:var(--accent)}
+.payer-col.unreg h4{color:var(--signal)}
+.payer-col header p{
+  margin:4px 0 0; font-family:"IBM Plex Mono",ui-monospace,monospace;
+  font-size:10.5px; letter-spacing:.05em; text-transform:uppercase; color:var(--ink-3);
+}
+.payer-col ul{margin:0; padding:14px 16px 16px 32px; font-size:14.5px; color:var(--ink-2); line-height:1.5}
+.payer-col li{margin-bottom:7px}
+.payer-col li:last-child{margin-bottom:0}
+
+/* ── surfaces list ────────────────────────────────── */
+.surfaces{display:flex; flex-direction:column; gap:1px; background:var(--rule); border:1px solid var(--rule); border-radius:3px; overflow:hidden; margin-top:26px}
+.surf{background:var(--surface); padding:18px 20px; display:grid; grid-template-columns:46px 1fr auto; gap:16px; align-items:start}
+.surf .id{
+  font-family:"IBM Plex Mono",ui-monospace,monospace; font-size:12px; font-weight:600;
+  color:var(--accent); padding-top:2px;
+}
+.surf h4{font-family:Archivo,sans-serif; font-weight:600; font-size:15.5px; margin:0 0 5px; letter-spacing:-.006em}
+.surf p{margin:0; font-size:14.5px; line-height:1.5; color:var(--ink-2)}
+.surf .rank{align-self:center}
+@media (max-width:640px){
+  .surf{grid-template-columns:34px 1fr; gap:12px}
+  .surf .rank{grid-column:2; justify-self:start; margin-top:8px}
+}
+
+/* ── callout ──────────────────────────────────────── */
+.callout{
+  margin:30px 0 6px; padding:24px 26px; border-radius:3px;
+  background:var(--surface); border:1px solid var(--rule);
+  border-left:3px solid var(--accent);
+}
+.callout.warn{border-left-color:var(--signal)}
+.callout h4{
+  font-family:Archivo,sans-serif; font-weight:600; font-size:16px; margin:0 0 9px;
+  letter-spacing:-.008em;
+}
+.callout p{margin:0 0 12px; font-size:15.5px; line-height:1.55; color:var(--ink-2)}
+.callout p:last-child{margin-bottom:0}
+.callout strong{color:var(--ink); font-weight:600}
+
+/* ── recommendation ───────────────────────────────── */
+.rec{
+  margin-top:26px; border:2px solid var(--ink); border-radius:3px;
+  background:var(--surface); overflow:hidden;
+}
+.rec > header{padding:24px 26px 22px; border-bottom:1px solid var(--rule)}
+.rec header .k{
+  font-family:"IBM Plex Mono",ui-monospace,monospace; font-size:11px;
+  letter-spacing:.15em; text-transform:uppercase; color:var(--signal); font-weight:600;
+}
+.rec header h3{
+  font-size:clamp(21px,2.8vw,27px); margin:9px 0 0; letter-spacing:-.02em; line-height:1.18;
+}
+.rec ol{margin:0; padding:22px 26px 24px 46px; font-size:15.5px; line-height:1.55; color:var(--ink-2)}
+.rec ol li{margin-bottom:12px}
+.rec ol li:last-child{margin-bottom:0}
+.rec ol strong{color:var(--ink); font-weight:600}
+.seq{
+  display:flex; flex-wrap:wrap; align-items:center; gap:8px;
+  padding:18px 26px 22px; border-top:1px solid var(--rule); background:var(--surface-2);
+  font-family:"IBM Plex Mono",ui-monospace,monospace; font-size:11.5px; color:var(--ink-2);
+}
+.seq b{
+  background:var(--accent); color:var(--surface); padding:5px 10px; border-radius:2px;
+  font-weight:600; letter-spacing:.03em;
+}
+.seq span{color:var(--ink-3)}
+.seq i{font-style:normal; padding:5px 10px; border:1px solid var(--rule); border-radius:2px; background:var(--surface)}
+
+footer{margin-top:64px; padding-top:26px; border-top:2px solid var(--ink)}
+footer p{
+  font-family:"IBM Plex Mono",ui-monospace,monospace; font-size:11.5px;
+  line-height:1.7; color:var(--ink-3); margin:0 0 10px; max-width:76ch;
+}
+footer p:last-child{margin-bottom:0}
+footer strong{color:var(--ink-2)}
+@media (prefers-reduced-motion:reduce){*{transition:none!important; animation:none!important}}
+:focus-visible{outline:2px solid var(--accent); outline-offset:2px}
+</style>
+
+<div class="wrap">
+
+<header class="mast">
+  <div class="eyebrow"><b>Phase 0 · Discovery</b><span>Market survey</span><span>Revision 2 · reconciled with EMSS</span><span>August 2026</span></div>
+  <h1>Ontario's transport gap</h1>
+  <p class="deck">Ontario has a patient transportation <strong>industry</strong>. It does not have a patient transportation <strong>system</strong>. Five separate networks move the same patients on different days of the week, and none of them can see the others.</p>
+</header>
+
+<!-- 1 ───────────────────────────────────────────── -->
+<section>
+  <div class="sec-head"><div class="sec-num">01</div><h2>What the survey found</h2></div>
+  <div class="body">
+    <p>Six findings drive every recommendation that follows. Each is sourced; each carries a confidence rating in the accompanying register.</p>
+  </div>
+
+  <div class="findings">
+    <div class="finding">
+      <span class="k">Finding 01</span>
+      <h4>The waste is documented and large</h4>
+      <p>The only population-level study of Ontario inter-facility transfers found ~400,000 a year costing ~$283M, with <strong>80% routine and non-urgent</strong> — largely carried by fully-equipped 911 ambulances. The most common trip: 10.5 km to a cardiologist or a dialysis chair.</p>
+    </div>
+    <div class="finding">
+      <span class="k">Finding 02</span>
+      <h4>There is no payer</h4>
+      <p>OHIP does not cover non-emergency transport. Emergency ambulance carries a regulated $45 co-payment; non-urgent stretcher transport is unregulated in price and uncovered, with no exemption available even on social assistance.</p>
+    </div>
+    <div class="finding">
+      <span class="k">Finding 03</span>
+      <h4>The US playbook does not transfer</h4>
+      <p>American NEMT software is built on Medicaid managed-care brokers that supply volume, prior authorization and a claims rail. Ontario has neither a broker layer nor a claims rail. Importing that architecture builds a product with nothing to plug into.</p>
+    </div>
+    <div class="finding">
+      <span class="k">Finding 04</span>
+      <h4>The buyer is fragmented — but real</h4>
+      <p>Hospitals, LTC operators, community agencies and regional renal programs each hold a piece. Two are single-payer pools: NIHB medical transportation in Ontario at <strong>$166.0M and growing ~20% a year</strong>, and the Northern Health Travel Grant.</p>
+    </div>
+    <div class="finding">
+      <span class="k">Finding 05</span>
+      <h4>Supply is consolidating</h4>
+      <p>Transdev/Voyago — 600+ medical attendants, positioned as Canada's largest NEPT brand — has been acquiring regional operators. A neutral coordination layer gets harder to build every year consolidation runs.</p>
+    </div>
+    <div class="finding">
+      <span class="k">Finding 06</span>
+      <h4>A vendor just collapsed under this market</h4>
+      <p>Quebec ePCR vendor <strong>Prehos</strong> gave notice on 8 June 2026 and ceased operating 7 July, owing ~$10M. <strong>~22 Ontario paramedic services</strong> were displaced on under a month's notice; some reverted to paper. Prepaid fees became unsecured claims and one service had to buy new laptops. The displaced migrated <strong>cloud to cloud</strong> — two vendors to replace one.</p>
+    </div>
+    <div class="finding">
+      <span class="k">Finding 07</span>
+      <h4>The obvious product is the wrong one</h4>
+      <p>Per-vehicle dispatch SaaS against Ontario's addressable fleet tops out near <strong>$3.4–5.8M ARR at total penetration</strong>. The value is not in selling consoles to operators — it is in owning the allocation decision and the settlement rail.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 2 ───────────────────────────────────────────── -->
+<section>
+  <div class="sec-head"><div class="sec-num">02</div><h2>The misallocation, in one bar</h2></div>
+  <div class="body">
+    <p>This is the finding the entire opportunity rests on. Four in five inter-facility transfers are clinically routine, yet the default vehicle is an emergency ambulance with a paramedic crew — because no one is making the allocation decision on purpose.</p>
+  </div>
+
+  <div class="block">
+    <p class="block-title">Ontario inter-facility transfers by clinical urgency</p>
+    <p class="block-sub">~400,000 transfers a year · about 1,000 a day</p>
+    <div class="band" role="img" aria-label="Stacked bar: 80 percent of Ontario inter-facility transfers are routine and non-urgent; 20 percent are urgent.">
+      <div class="routine" title="Routine and non-urgent: ~320,000 transfers a year">80% routine &amp; non-urgent</div>
+      <div class="urgent" title="Urgent: ~80,000 transfers a year">20%</div>
+    </div>
+    <div class="band-key">
+      <span><i class="sw" style="background:var(--signal)"></i>Routine &amp; non-urgent — ~320,000/yr</span>
+      <span><i class="sw" style="background:var(--neutral-mark)"></i>Urgent — ~80,000/yr</span>
+    </div>
+    <p class="note">Source: population-level study of Ontario inter-facility transfers (ICES / U of T / Ornge / Sunnybrook), published in <em>Healthcare Policy</em>. Baseline year 2009 — see the caveat in §08. Scaled to 2026 the volume estimate is 500,000–690,000 transfers a year.</p>
+  </div>
+
+  <div class="stats">
+    <div class="stat"><span class="v em">~$2B</span><span class="l">Ontario land ambulance spend per year (province funds ~$1B at a 50% cost share)</span></div>
+    <div class="stat"><span class="v">300,000</span><span class="l">Hours a year lost to offload delay in Toronto alone; Ottawa 93,686</span></div>
+    <div class="stat"><span class="v">17.0%</span><span class="l">Of Canadian hospital days are alternate-level-of-care — beds held by patients ready to leave</span></div>
+    <div class="stat"><span class="v">10%</span><span class="l">Of dialysis patients miss at least one session a month; 35% miss one per quarter</span></div>
+  </div>
+</section>
+
+<!-- 3 ───────────────────────────────────────────── -->
+<section>
+  <div class="sec-head"><div class="sec-num">03</div><h2>Five silos, no system</h2></div>
+  <div class="body">
+    <p>Ontario already proved it can coordinate patient transport — for the acute, high-severity, provincially-funded minority. CritiCall's Repatriation Tool has served every acute hospital since 2014, and Ornge moved 23,725 patient legs in 2024/25 across a million square kilometres.</p>
+    <p>The routine 80% never got that treatment, because no ministry owns it.</p>
+  </div>
+
+  <div class="tw">
+    <table>
+      <thead><tr><th>Network</th><th>Operated by</th><th>Paid by</th><th>Coordination</th></tr></thead>
+      <tbody>
+        <tr><td><strong>911 land ambulance</strong></td><td>~50 municipal paramedic services</td><td class="n">Province 50% / municipal 50%</td><td><span class="pill ok">Central dispatch</span></td></tr>
+        <tr><td><strong>Critical care &amp; air</strong></td><td>Ornge · CritiCall for placement</td><td class="n">Province</td><td><span class="pill ok">Provincial</span></td></tr>
+        <tr><td><strong>Non-urgent patient transfer</strong></td><td>Dozens of private operators</td><td class="n">Hospital · LTC · the patient</td><td><span class="pill hi">None</span></td></tr>
+        <tr><td><strong>Specialized / para transit</strong></td><td>Municipal transit (Wheel-Trans et al.)</td><td class="n">Municipal + fare</td><td><span class="pill mid">Municipal only</span></td></tr>
+        <tr><td><strong>Community assisted transport</strong></td><td>Support agencies, volunteer drivers</td><td class="n">Ontario Health + co-pay</td><td><span class="pill mid">Agency by agency</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="callout warn">
+    <h4>The regulatory hole</h4>
+    <p>Non-urgent patient transfer sits <strong>outside the Ambulance Act</strong>: no licensing, no vehicle standard, no crew standard, no price ceiling. A coroner has called for regulation since 1995; a 2011 bill died when the legislature dissolved; Ontario's Ombudsman has called paramedic oversight "complicated, overburdened, and wholly inadequate."</p>
+    <p>Twenty-five years of failed attempts say <strong>do not bet on regulation arriving</strong>. Build a credentialing and audit spine anyway — so that if it lands, you are the reference implementation rather than a casualty.</p>
+  </div>
+</section>
+
+<!-- 4 ───────────────────────────────────────────── -->
+<section>
+  <div class="sec-head"><div class="sec-num">04</div><h2>Who pays — the crux</h2></div>
+  <div class="body">
+    <p>Emergency transport has one funding structure and a regulated price. Everything else has neither.</p>
+  </div>
+
+  <div class="payers">
+    <div class="payer-col reg">
+      <header><h4>Emergency (911)</h4><p>Regulated · ~$2B/yr</p></header>
+      <ul>
+        <li>Province 50% / municipality 50%</li>
+        <li>Patient co-payment <strong>$45</strong></li>
+        <li><strong>$240</strong> if deemed not medically necessary</li>
+        <li>Statutory exemptions exist — though "many people are not aware" of them</li>
+      </ul>
+    </div>
+    <div class="payer-col unreg">
+      <header><h4>Non-urgent transport</h4><p>Unregulated · no OHIP coverage</p></header>
+      <ul>
+        <li>Hospital budget · LTC home budget</li>
+        <li>Patient and family, out of pocket, no exemption</li>
+        <li>NIHB — <strong>$166.0M</strong> in Ontario (2023–24)</li>
+        <li>Northern Health Travel Grant — reimbursed after the fact</li>
+        <li>WSIB · private insurers · charities</li>
+        <li>Ontario Health atHome and community agencies + co-pay</li>
+        <li>Municipal paratransit + fare</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="callout">
+    <h4>Three properties make this the business model, not just context</h4>
+    <p><strong>"Medically necessary" is undefined</strong> in policy, legislation or regulation. Hospitals have told the Patient Ombudsman that needing a stretcher does not by itself establish medical necessity. The most consequential financial decision in the trip has no decision support behind it.</p>
+    <p><strong>Nobody sees total cost.</strong> One patient can consume a municipal paratransit trip on Monday, a hospital-funded transfer on Wednesday and an NIHB-funded trip on Friday. No system reconciles this.</p>
+    <p><strong>Eligibility goes unclaimed.</strong> The Northern grant requires the patient to front the money and file afterward — roughly 200,000 reimbursements processed in 2023–24, at $0.41/km. Automated eligibility and split settlement is genuinely unbuilt infrastructure.</p>
+  </div>
+
+  <div class="callout">
+    <h4>The most valuable regulatory fact here</h4>
+    <p>Ontario's <strong>OADS v4.0</strong> — the Ambulance Documentation Standards, mandatory since 2 September 2025 under O. Reg. 257/00 — is the compliance moat that protects the incumbent ePCR vendors. It binds Ambulance Service Operators, paramedics and Base Hospitals.</p>
+    <p>Because non-urgent patient transfer sits <strong>outside the Ambulance Act, it also sits outside OADS</strong>. A transport product that never becomes the 911 record of care does not have to cross that moat. The same absence of regulation that makes this market chaotic to operate in makes it <strong>cheap to enter with software</strong>.</p>
+    <p>⚠️ The exemption is conditional. Right-sizing triage decides whether a patient needs an ambulance — the nearer that moves to diverting emergency resources, the nearer it moves back to the regulated boundary. <strong>Display and record clinician decisions; never derive them.</strong> And confirm the exemption with a legal opinion before it carries weight in a pitch.</p>
+  </div>
+</section>
+
+<!-- 5 ───────────────────────────────────────────── -->
+<section>
+  <div class="sec-head"><div class="sec-num">05</div><h2>Demand is compounding</h2></div>
+  <div class="body">
+    <p>Three forces push the same direction, and one of them is being deliberately created by provincial policy.</p>
+    <h3>Demographics</h3>
+    <p>Ontario had <strong>3.1 million people aged 65+ in 2025</strong> — 18.9% of the population, heading to 4.6 million by 2051, with every baby boomer past 65 by 2031. That cohort has grown ~1.7× since the transfer study was published, against ~1.25× total population growth.</p>
+    <h3>Recurring treatment travel</h3>
+    <p>More than <strong>11,000 Ontarians are on dialysis</strong>, roughly 78% of them in-centre. In-centre means three trips a week, indefinitely — no other patient group in health care carries that transport dependency. It generates about 1.33 million round trips a year, every one of them known in advance.</p>
+    <h3>Policy is manufacturing trips</h3>
+    <p>Ontario funded <strong>57 new community surgical and diagnostic centres</strong> at $155M over two years, including 35 for MRI and CT serving a claimed 800,000+ patients. Every one of them decouples a procedure from a hospital — and creates a journey that did not previously exist.</p>
+  </div>
+
+  <div class="block">
+    <p class="block-title">Federal medical transportation spend · Ontario</p>
+    <p class="block-sub">Non-Insured Health Benefits, fiscal year</p>
+    <div class="stats" style="margin:0; border:0; background:transparent; gap:14px">
+      <div class="stat" style="border:1px solid var(--rule); border-radius:2px"><span class="v">$114.8M</span><span class="l">2021–22</span></div>
+      <div class="stat" style="border:1px solid var(--rule); border-radius:2px"><span class="v">$140.3M</span><span class="l">2022–23 · +22.2%</span></div>
+      <div class="stat" style="border:1px solid var(--rule); border-radius:2px"><span class="v em">$166.0M</span><span class="l">2023–24 · +18.3%</span></div>
+    </div>
+    <p class="note">Second-highest of any province after Manitoba. A single federal payer, already contracting, compounding at roughly 20% a year — the most attractive payer structure in the Ontario market.</p>
+  </div>
+</section>
+
+<!-- 6 ───────────────────────────────────────────── -->
+<section>
+  <div class="sec-head"><div class="sec-num">06</div><h2>Who else is here</h2></div>
+  <div class="body">
+    <p>Four groups compete for adjacent ground. None occupies the intersection that matters.</p>
+  </div>
+
+  <div class="tw">
+    <table>
+      <thead><tr><th>Category</th><th>Who</th><th>Threat</th><th>Why</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><strong>US NEMT SaaS</strong></td>
+          <td>RouteGenie · TobiCloud · Bambi · TripMaster · MediRoutes</td>
+          <td><span class="pill none">Low</span></td>
+          <td>Architecturally coupled to Medicaid brokers — RouteGenie's headline feature is 25+ broker connections. None of those rails exist here. $50–$200+/vehicle/mo.</td>
+        </tr>
+        <tr>
+          <td><strong>Hospital orchestration</strong></td>
+          <td>Ryde Central</td>
+          <td><span class="pill hi">High</span></td>
+          <td>Closest analogue to the right product: hospital↔provider automation, EHR pull, CAD integration. US-oriented, no confirmed Ontario presence — a fast follower could land here first.</td>
+        </tr>
+        <tr>
+          <td><strong>Operator portals</strong></td>
+          <td>goPatient (Transdev) · Voyago booking</td>
+          <td><span class="pill hi">Structural</span></td>
+          <td>Every consolidator portal that locks in a hospital shrinks the neutral market. This is the clock on the opportunity.</td>
+        </tr>
+        <tr>
+          <td><strong>Rideshare health</strong></td>
+          <td>Uber Health — live in Ontario</td>
+          <td><span class="pill hi">High, ambulatory only</span></td>
+          <td>No app needed, multilingual, Hope Air partnership. Cannot do stretcher, bariatric, oxygen, or cognitive-impairment escort. Takes the easy top, leaves the high-acuity margin.</td>
+        </tr>
+        <tr>
+          <td><strong>Ontario ePCR incumbents</strong></td>
+          <td>ImageTrend · ESO/Interdev iMedic</td>
+          <td><span class="pill mid">Adjacent</span></td>
+          <td>Not transport competitors, but they hold the paramedic-service and hospital relationships. ImageTrend crossed the OADS moat in March 2025; ESO's iMedic ships CADLink real-time dispatch. Likeliest parties to extend sideways.</td>
+        </tr>
+        <tr>
+          <td><strong>Canadian transit tech</strong></td>
+          <td>Spare Labs · Pantonium · Blaise</td>
+          <td><span class="pill mid">Medium</span></td>
+          <td>Strong optimisation, municipal channel, Canadian data residency — but transit-agency shaped, not clinically shaped. Partner rather than fight.</td>
+        </tr>
+        <tr>
+          <td><strong>Traumasoft</strong> <em>(corrected)</em></td>
+          <td>US private-EMS operations platform</td>
+          <td><span class="pill mid">Category proof</span></td>
+          <td>Not a US NEMT point solution: CAD, ePCR, billing, scheduling and fleet in one, founded 2006, ~200 customers, aimed at private EMS and NEMT operators. NEMSIS, not OADS; no Canadian footprint evidenced. Its scale proves the integrated category supports a real business — in a market that has a broker rail.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="callout">
+    <h4>The whitespace, stated plainly</h4>
+    <p>Nobody occupies the intersection of <strong>clinical acuity triage × multi-provider neutrality × multi-payer settlement × Ontario regulatory fit</strong>.</p>
+    <p>US SaaS has neutrality and no clinical or payer fit. Uber Health has scale and no acuity. Operator portals have clinical fit and no neutrality. Transit tech has optimisation and no clinical model. CritiCall has coordination and no reach into the routine 80%.</p>
+  </div>
+</section>
+
+<!-- 7 ───────────────────────────────────────────── -->
+<section>
+  <div class="sec-head"><div class="sec-num">07</div><h2>Seven product surfaces</h2></div>
+  <div class="body">
+    <p>Ranked by defensibility against evidence of pain.</p>
+  </div>
+
+  <div class="surfaces">
+    <div class="surf"><div class="id">S1</div><div><h4>Acuity triage &amp; right-sizing</h4><p>Decide per trip: 911 ambulance, stretcher van, wheelchair van, sedan, volunteer driver — or no trip at all. Where the documented waste lives, and where "medically necessary" is currently decided with no decision support.</p></div><div class="rank"><span class="pill ok">Highest value</span></div></div>
+    <div class="surf"><div class="id">S2</div><div><h4>Recurring-trip optimiser</h4><p>Standing orders for dialysis, oncology, rehab and wound care; pooling across patients and providers; automatic re-optimisation on schedule change.</p></div><div class="rank"><span class="pill ok">Best wedge</span></div></div>
+    <div class="surf"><div class="id">S3</div><div><h4>Neutral booking exchange</h4><p>One PHIPA-safe request, fanned to a multi-provider market with real acceptance and ETA. Directly contests operator-captive portals — and has the shortest window before consolidation closes it.</p></div><div class="rank"><span class="pill hi">Time-limited</span></div></div>
+    <div class="surf"><div class="id">S4</div><div><h4>Discharge-flow integration</h4><p>Predict discharge readiness from hospital signals, pre-book transport, tie vehicle arrival to bed release. Sells against ALC days, which hospitals already measure.</p></div><div class="rank"><span class="pill mid">Near-term</span></div></div>
+    <div class="surf"><div class="id">S5</div><div><h4>Eligibility &amp; split settlement</h4><p>Determine who pays which fraction — NIHB, the Northern grant, hospital, LTC, insurer, patient — and settle it. Unbuilt. The deepest moat and the slowest build.</p></div><div class="rank"><span class="pill mid">Long moat</span></div></div>
+    <div class="surf"><div class="id">S6</div><div><h4>Northern &amp; Indigenous journeys</h4><p>Multi-leg land and air, grant pre-authorisation instead of after-the-fact reimbursement, Ornge and Hope Air handoffs. A federal payer growing 20% a year, and the strongest equity case.</p></div><div class="rank"><span class="pill mid">Single payer</span></div></div>
+    <div class="surf"><div class="id">S7</div><div><h4>Quality &amp; credentialing spine</h4><p>Crew credentials, vehicle standards, incident reporting and outcome tracking in a sector with none. Low near-term revenue; the highest-leverage asset if regulation ever lands.</p></div><div class="rank"><span class="pill none">Option value</span></div></div>
+  </div>
+</section>
+
+<!-- 8 ───────────────────────────────────────────── -->
+<section>
+  <div class="sec-head"><div class="sec-num">08</div><h2>The SaaS trap</h2></div>
+  <div class="body">
+    <p>The obvious business is to sell dispatch software per vehicle. Sized honestly against Ontario's entire eligible fleet — roughly 3,000–5,000 vehicles across patient transfer, land ambulance, paratransit and community fleets — it does not clear the bar.</p>
+  </div>
+
+  <div class="block">
+    <p class="block-title">Ontario revenue ceiling by business model</p>
+    <p class="block-sub">Upper bound at full penetration, annual</p>
+    <div class="bars">
+      <div class="bar-row">
+        <div class="bar-lab">Per-vehicle SaaS<em>$100/veh/month</em></div>
+        <div class="bar-track"><div class="bar-fill trap" style="width:10%" title="$3.4–5.8M — the whole prize for the obvious product, at 100% of every eligible vehicle in Ontario"><span class="outside">$3.4–5.8M</span></div></div>
+      </div>
+      <div class="bar-row">
+        <div class="bar-lab">Payer utility contract<em>NIHB / Northern grant admin</em></div>
+        <div class="bar-track"><div class="bar-fill viable" style="width:33%" title="$5–20M — single buyer, slow sale, very sticky">$5–20M</div></div>
+      </div>
+      <div class="bar-row">
+        <div class="bar-lab">Per-trip transaction<em>3–8% of services spend</em></div>
+        <div class="bar-track"><div class="bar-fill viable" style="width:75%" title="$15–45M — requires sitting in the flow of funds">$15–45M</div></div>
+      </div>
+      <div class="bar-row">
+        <div class="bar-lab">Outcome / savings share<em>ALC days, ambulance hours, missed sessions</em></div>
+        <div class="bar-track"><div class="bar-fill viable" style="width:100%" title="$20–60M — hardest to sell, highest ceiling, best moat">$20–60M</div></div>
+      </div>
+    </div>
+    <div class="axis"><span>$0</span><span>$20M</span><span>$40M</span><span>$60M</span></div>
+    <p class="note">Bars show the upper bound of each estimated range. Per-vehicle SaaS is shown in grey as the non-viable case. Realistic penetration against entrenched incumbents puts the SaaS model at $0.7–1.8M ARR. Full derivation and every assumption in <span style="color:var(--ink-2)">docs/02-opportunity-model.md</span>.</p>
+  </div>
+
+  <div class="callout">
+    <h4>The rule this implies</h4>
+    <p><strong>Price against avoided cost, never against seats.</strong> Every viable model here requires sitting in either the allocation decision or the flow of funds. A product that sits in neither is a $4M business — and does not justify the clinical and regulatory work this domain demands.</p>
+  </div>
+</section>
+
+<!-- 9 ───────────────────────────────────────────── -->
+<section>
+  <div class="sec-head"><div class="sec-num">09</div><h2>What carries over from EMSS</h2></div>
+  <div class="body">
+    <p class="corr"><strong>Corrected.</strong> The first version of this section assumed EMSS meant a dispatch/CAD system and listed dispatch logic, AVL and crew scheduling as assets that carried over. The codebase has now been read. <strong>None of those exist</strong>, and every row of the original table was wrong.</p>
+    <p><strong>EMSS is AidPost</strong> — an offline-first PWA for casualty care and transport documentation. ~45,500 lines across 195 files. Responders capture identity, injuries on an anatomical body chart, vitals and treatments, then hand over to a hospital as an HL7 FHIR R4 bundle. Multilingual with right-to-left support.</p>
+  </div>
+
+  <div class="tw">
+    <table>
+      <thead><tr><th>Asset</th><th>Where</th><th>Why it matters here</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Ontario Health EHR integration</strong></td><td class="n">core/ehr/ontario.ts<br>packages/ehr-gateway</td><td>Provincial Client Registry <em>Patient/$match</em>, OHIP identifier systems, ATNA AuditEvent on every access, ONE ID auth, mTLS. This survey recommended building FHIR-native against the provincial registries — <strong>it is already built</strong>.</td></tr>
+        <tr><td><strong>Conflict-aware sync</strong></td><td class="n">core/sync/oplog.ts</td><td>Append-only ops with Lamport clocks folded in total canonical order — byte-identical state across replicas regardless of arrival order, conflicts reported rather than silently lost. Directly reusable for driver devices that go offline in Northern Ontario.</td></tr>
+        <tr><td><strong>Multi-tenant backend</strong></td><td class="n">packages/sync-service</td><td>Tenant context and store, OIDC, ops and blob stores, retention, admin and EHR audit stores, Postgres and SQLite.</td></tr>
+        <tr><td><strong>PHIPA primitives</strong></td><td class="n">app + core</td><td>AES-256-GCM vault, RBAC-lite, step-up PIN, tamper-evident audit log, minimum-necessary masking with timed audited break-glass, propagating erasure.</td></tr>
+        <tr><td><strong>i18n with RTL</strong></td><td class="n">src/i18n.tsx</td><td>Loadable JSON language packs — a deployment adds a language with no code release.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="callout warn">
+    <h4>The thesis does not transfer — and that is the important part</h4>
+    <p>AidPost's differentiator, sharpened across four survey passes, is <strong>"no backend, no sync server, no vendor relationship."</strong> Its own fourth pass retired "works offline" as a headline because the incumbents do offline capture too; what remains distinctive is the <em>absence</em> of a server, an account and a vendor.</p>
+    <p><strong>A transport coordination layer cannot be built that way.</strong> Matching a request to a provider, settling across payers and holding shared fleet state are inherently multi-party and networked. A booking exchange requires a server by definition — precisely the shape AidPost defines itself against.</p>
+    <p><strong>Reuse the engine. Do not reuse the pitch.</strong> Dispatch, ETA prediction, pooling, fleet management, booking, eligibility and settlement are all new work. That is most of the product.</p>
+  </div>
+
+  <p class="note" style="margin-left:0; max-width:76ch">AidPost's own commercialization file scores Official EMS at ★ fit, ★ accessibility, heavy regulatory load, 12–24+ months — "the biggest prize but a fortress" — and recommends the humanitarian path instead. A patient transportation product is not that fortress: outside the Ambulance Act, outside OADS, logistics rather than SaMD. But it is still Ontario health-system selling, and it is a second front for the same team. Those are resourcing decisions, not research findings.</p>
+</section>
+
+<!-- 10 ──────────────────────────────────────────── -->
+<section>
+  <div class="sec-head"><div class="sec-num">10</div><h2>Recommendation</h2></div>
+  <div class="body">
+    <p>Do not build a dispatch platform. Build the allocation and settlement layer Ontario does not have — starting from a single wedge with a real budget holder and a measurable outcome.</p>
+  </div>
+
+  <div class="rec">
+    <header>
+      <span class="k">Recommended beachhead</span>
+      <h3>Recurring dialysis transport, sold to regional renal programs</h3>
+    </header>
+    <ol>
+      <li><strong>Frequency.</strong> Three trips a week per patient, indefinitely. ~11,000 dialysis patients, ~78% in-centre — about 1.33 million round trips a year.</li>
+      <li><strong>Schedulability.</strong> Treatment slots are fixed and known in advance. This is the most poolable demand in the entire health system.</li>
+      <li><strong>An identified buyer.</strong> Regional renal programs under Ontario Health, with an existing performance-reporting relationship.</li>
+      <li><strong>A metric already tracked.</strong> Missed treatments — 10% monthly, 35% quarterly — with published morbidity consequences. Value provable in one quarter.</li>
+      <li><strong>A natural expansion path.</strong> Oncology and rehab share the recurring structure, and dialysis patients also generate discharge and inter-facility trips — walking you into S4 and S3 through a door you already hold.</li>
+    </ol>
+    <div class="seq">
+      <b>S2 Dialysis</b><span>→</span><i>S4 Discharge flow</i><span>→</span><i>S3 Neutral exchange</i><span>→</span><i>S6 Northern &amp; Indigenous</i><span>→</span><i>S5 Settlement</i>
+    </div>
+  </div>
+
+  <div class="callout">
+    <h4>One caution from the EMSS survey</h4>
+    <p>The Prehos collapse is the closest thing this market has to a natural experiment, and it cuts against architectural pitches. Twenty-two Ontario services were displaced by a <strong>commercial</strong> failure — not an outage — and the one documented migration went <strong>cloud to cloud</strong>, needing two vendors to replace one.</p>
+    <p><strong>Sell the outcome, not the architecture.</strong> For the dialysis wedge that means missed treatments avoided — a number the buyer already tracks and already answers for. Data ownership and continuity are a strong second argument and a poor first one.</p>
+  </div>
+
+  <div class="callout warn">
+    <h4>Two decisions the research cannot make</h4>
+    <p>Whether this product is a <strong>coordination layer</strong>, an <strong>operator</strong>, or a <strong>payer-side utility</strong> — and which wedge gets funded first. Both are the team's calls. Everything above is the input to them.</p>
+  </div>
+</section>
+
+<footer>
+  <p><strong>Method and its limits.</strong> Research conducted August 2026. Direct document retrieval was blocked by network egress policy for every primary-source domain attempted — including ICES, PubMed Central, ontario.ca, CIHI and the Ombudsman. Figures were therefore reconstructed from search-result summaries of those documents, not from the documents themselves.</p>
+  <p>That is adequate for shaping product strategy. It is <strong>not</strong> adequate for a business case, a board deck, or anything a third party will rely on. Every figure carries a confidence rating in the source register, together with a prioritised verification list — led by refreshing the 2009 transfer study, obtaining real Ontario patient-transfer pricing, and confirming what share of dialysis patients actually use assisted transport.</p>
+  <p><strong>Revision 2.</strong> Reconciled against the EMSS repository (product name AidPost), reviewed read-only at commit <strong>a8eb1d9</strong>. That repository carries its own four-pass Canadian market survey using adversarial three-vote claim verification — better-evidenced than this document, and hitting the same egress constraint. Findings drawn from it are marked in the full survey, and <strong>where the two disagree, theirs wins</strong>. Section 09 of this survey was wrong and has been rewritten against the actual code.</p>
+  <p>Full survey, sizing model, source register and reuse assessment: <strong>docs/01-market-survey.md</strong> · <strong>docs/02-opportunity-model.md</strong> · <strong>docs/03-source-register.md</strong> · <strong>docs/04-emss-reuse-assessment.md</strong></p>
+</footer>
+
+</div>
