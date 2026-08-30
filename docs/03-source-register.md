@@ -129,6 +129,41 @@ sources are named, dated and individually cited.
 | **No CAD, AVL, crew scheduling, or allocation engine exists** | `[H]` — absence confirmed across `src/` and `packages/` |
 | Repository licence is proprietary, all rights reserved | `[H]` |
 
+### City-level research (August 2026)
+
+| Fact | Rating | Note |
+| --- | --- | --- |
+| Ottawa offload delays 2022→2025: Montfort 224→53, QCH 168→53, TOH General 163→58, TOH Civic 136→47, CHEO 39→36 min | `[M]` | City of Ottawa / paramedic service reporting via news summaries |
+| Ottawa "level zero" 866 min in 2025, down 92% from 11,372 in 2024 | `[M]` | Same |
+| Ottawa CTAS 1 response 70.4% against a 75% target (2025) | `[M]` | Same |
+| ALC occupies ~1 in 5 beds at TOH Civic, 1 in 6 at Montfort and QCH | `[M]` | Older reporting — **year not firmly established; verify currency** |
+| TOH Regional Nephrology: 900+ patients, 10 sites, 3 in-centre + 4 satellite + home | `[M]` | TOH program pages |
+| Para Transpo ~878,000 trips Nov 2024–Oct 2025, +3.6% | `[M]` | Ottawa transit budget reporting |
+| Ottawa land ambulance grant $62,529,121 (2025), +6% | `[H]` | MOH / LASG |
+| Toronto Paramedic Services 350,000+ calls 2024, forecast +3%/yr | `[M]` | City of Toronto |
+| Toronto paramedics 700+ hours/day in hospital, ~60% of service time (2024) | `[M]` | City of Toronto |
+| 42% of Toronto cases >30 min offload (2023) | `[M]` | City of Toronto |
+| Toronto Paramedic Services 2025 budget $372.3M gross, +$20.8M | `[H]` | 2025 budget notes |
+| Ottawa is a designated area under the French Language Services Act; Montfort is the francophone teaching hospital | `[M]` | **Confirm exact designation scope for health transport** |
+
+### Business-case cost inputs (August 2026)
+
+| Input | Value | Rating | Note |
+| --- | --- | --- | --- |
+| Wheelchair trip ~20 km | ~$150 | `[M]` | Published GTA market rate; **Ottawa rates not separately verified** |
+| Wheelchair mileage | ~$3.25/km local, ~$3.00/km long-distance | `[M]` | Same |
+| Long-distance structure | $299 base + $2.95/km | `[M]` | Same |
+| Wait time | $45/hr ambulatory · $60/hr wheelchair · $170/hr stretcher | `[M]` | Same |
+| Add-ons | same-day $95 · after-hours $75 · weekend $65 · oxygen $30 · stairs $45–140 | `[M]` | Same |
+| Paramedic-supported trip | $500+ | `[M]` | Same |
+| Wheelchair conversion | +$20,000–30,000 over vehicle | `[M]` | Canadian converters |
+| Patient transfer wage | ~$21/hr | `[M]` | Ontario wage survey. **Note: a widely-cited $13.64/hr NEMT-driver figure is below Ontario minimum wage and was discarded as unreliable** |
+| Paramedic wage | $30.75–$50.81/hr, avg $42.04 | `[M]` | Job Bank / Indeed Ontario |
+| Ontario commercial auto insurance | $1,500–3,000/vehicle/yr | `[M]` | Broker sources; medical passenger transport carries a premium — **quote required** |
+
+*This closes verification item #3 (real PTS pricing) at `[M]` confidence for the
+GTA. Ottawa-specific rates and any contract rate remain unverified.*
+
 ### Competitors
 
 | Fact | Rating |

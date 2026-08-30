@@ -15,7 +15,7 @@
 > verification. Findings from it are merged below and marked `[AidPost]`. Where
 > the two disagree, **AidPost's document wins** — it was researched against
 > named, dated sources with a refutation process, and it records its own refuted
-> claims in the open. §08 of this survey was **wrong and has been rewritten**;
+> claims in the open. §10 of this survey was **wrong and has been rewritten**;
 > see [`04-emss-reuse-assessment.md`](04-emss-reuse-assessment.md).
 
 ---
@@ -168,7 +168,7 @@ contributing cause and missed treatments associated with increased morbidity.
 `[M]` Canadian-specific research names travel distance and time, cost, mode, and
 service reliability as the recurring themes.
 
-This is the best wedge in the market and §10 argues for it: highest frequency,
+This is the best wedge in the market and §12 argues for it: highest frequency,
 fully schedulable, geographically clustered, clinically owned by an identifiable
 buyer, with a hard outcome metric already being tracked.
 
@@ -342,7 +342,177 @@ into the routine 80%.
 
 ---
 
-## 7. Product space — seven candidate surfaces
+## 7. Ottawa
+
+Ottawa is the better first market in Ontario, and the reason is counter-intuitive:
+**its ambulance crisis is largely over.**
+
+### 7.1 The offload argument does not work here any more
+
+Ottawa Paramedic Service has substantially fixed the problem that motivates most
+of this survey. Between 2022 and 2025 `[M]`:
+
+| Hospital | Offload delay 2022 | 2025 |
+| --- | --- | --- |
+| Montfort | 224 min | **53 min** |
+| Queensway Carleton | 168 min | **53 min** |
+| TOH General | 163 min | **58 min** |
+| TOH Civic | 136 min | **47 min** |
+| CHEO | 39 min | **36 min** |
+
+"Level zero" — no ambulance available anywhere in the city — fell to **866
+minutes in 2025, down 92% from 11,372 minutes in 2024**. `[M]` The service still
+missed its CTAS 1 target (70.4% against a 75% council-approved target), so it is
+not solved, but the ambulance-availability crisis is no longer the live wound it
+is in Toronto.
+
+**What this changes:** do not lead an Ottawa pitch with ambulance hours saved.
+That argument was already won by someone else, and repeating it to Ottawa
+Paramedic Service will read as not having done the homework. Lead with **hospital
+discharge flow** and **recurring treatment travel**, both of which are unresolved.
+
+### 7.2 What is unresolved: ALC and beds
+
+ALC patients occupy roughly **one in five beds at The Ottawa Hospital's Civic
+campus, and one in six at Montfort and Queensway Carleton** `[M]`. Reporting on
+the same problem describes elective hip and knee replacements being cancelled on
+weekdays because an ALC patient holds a surgical-wing bed.
+
+Transport is not the whole of ALC — placement availability dominates — but it is
+the last-mile blocker on a discharge that is otherwise ready, and it is the part
+a vendor can actually move.
+
+### 7.3 The dialysis anchor — the strongest single opportunity in the province
+
+The Ottawa Hospital's Regional Nephrology Program is **one of the largest in
+Canada**: more than **900 patients dialysing across 10 sites** — the Civic,
+General and Riverside campuses plus satellite clinics across Ottawa and Eastern
+Ontario — structured as three in-centre units, four satellites and a home
+program. `[M]`
+
+Applying the provincial in-centre share (~78%) gives roughly **700 in-centre
+patients × 3 sessions a week ≈ 109,000 round trips a year**, clustered around ten
+known addresses on fixed schedules, under a single clinical owner.
+
+That is the most concentrated, most poolable, most contractable block of
+recurring medical transport demand this survey found anywhere in Ontario — and
+it sits in a city of ~1.1M rather than one of 3M, so a single operator or
+platform can plausibly hold a meaningful share of it.
+
+### 7.4 The rest of the picture
+
+- **Para Transpo** carried just over **878,000 trips** between November 2024 and
+  October 2025, up ~3.6%. `[M]` Municipal, fare-subsidised, and a partial
+  substitute for the ambulatory tier.
+- **Land ambulance funding**: Ottawa received **$62,529,121** in 2025, up ~6%. `[H]`
+- **Geography cuts both ways.** Ottawa is ~2,790 km² — a dense core wrapped in a
+  large rural fringe (Kanata, Stittsville, Osgoode, Cumberland) — and the
+  hospital catchment reaches into Renfrew County, Prescott-Russell, Cornwall and
+  Winchester. Long deadhead legs hurt margin; they also deter sub-scale
+  competitors.
+- **The Quebec border is a real complication.** Gatineau sits across the river
+  under a different health system, a different insurer and different vehicle
+  rules. Interprovincial trips are not an edge case here; they are routine.
+
+### 7.5 Bilingual service is a requirement, not a feature
+
+Ottawa is a designated area under Ontario's **French Language Services Act**, and
+**Hôpital Montfort** is the province's francophone teaching hospital. Health
+services delivered here are expected to be available in French.
+
+Most patient-transfer operators do not document bilingual capability. Any product
+built on the EMSS core inherits **EN/FR with loadable language packs already
+built** — which converts a compliance obligation into a differentiator at
+approximately zero marginal cost. This is the clearest case in the survey of an
+existing asset mapping onto a specific local requirement.
+
+### 7.6 Competition in Ottawa
+
+Thinner than Toronto, but not empty, and the strongest player is the consolidator.
+
+| Player | Position |
+| --- | --- |
+| **Priority Patient Transfer Service** | Acquired by **Transdev/Voyago**. Runs **goPatient**, an online booking portal offered exclusively to contract hospitals — an incumbent with switching costs already installed |
+| **Ontario Patient Transfer** | Operates one of its three "super bases" in Ottawa, plus satellites at Winchester and Cornwall |
+| **Long tail** | Med Runner and other regional operators |
+
+**Read:** the Ottawa opportunity is real but it is not empty ground. A hospital
+already running goPatient has a working booking path, and displacing it requires
+a better answer than "we also have an app."
+
+---
+
+## 8. Toronto
+
+Toronto is the largest pool in the province and the hardest to win. It is where
+the survey's central thesis is most true and least ownable.
+
+### 8.1 The offload crisis is live here
+
+Where Ottawa fixed its problem, Toronto's is unresolved and structural:
+
+- **350,000+ emergency calls in 2024**, forecast to grow ~3% a year. `[M]`
+- Paramedics spend **over 700 hours a day in hospital — about 60% of total
+  service time.** `[M]` That is roughly 255,000 hours a year of paramedic
+  capacity absorbed by hospital handover.
+- **42% of cases took longer than 30 minutes to offload** (2023). `[M]`
+- **2025 budget: $372.3M gross**, up $20.8M, including 102 additional
+  operational staff. `[H]`
+
+Every argument in §1 about non-urgent transfers consuming emergency capacity
+applies here at full strength. The right-sizing pitch (product surface S1) has its
+strongest possible audience in Toronto.
+
+### 8.2 The largest concentration of transfer demand in Canada
+
+Toronto holds the densest cluster of academic and community hospitals in the
+country — UHN, Sinai, SickKids, Sunnybrook, St. Michael's, Michael Garron, North
+York General, Humber River and Scarborough Health Network among them. Academic
+centres generate inter-facility transfers structurally: patients move between
+sites for imaging, procedures, specialist consults and repatriation to community
+hospitals. Short distances, high frequency.
+
+**Wheel-Trans** carried **3.54 million trips in 2024** — up more than 541,000
+over 2023 — serving **42,000+ registrants** and about **9,700 riders a day**,
+inside a system that carried 419.9M conventional trips. `[H]` No other Ontario
+municipality has specialized-transit capacity at anything close to this scale.
+
+### 8.3 Why it is the wrong place to start
+
+Three reasons, all structural:
+
+1. **The competitive field is the densest in Ontario.** Voyago, RNR, Encore,
+   Swift Med Care, Health Lync, Ontime, MD Transfer and others all operate here.
+   Price competition in an unregulated market is brutal.
+2. **Uber Health is live in Toronto and Brampton.** `[H]` The ambulatory tier —
+   the easiest, highest-margin trips — is actively being taken by a company with
+   better logistics, no app requirement for riders, and multilingual support. What
+   is left is the stretcher, bariatric, oxygen and escort work: harder, slower,
+   more expensive to staff.
+3. **No single buyer holds enough demand.** Toronto's dialysis population is
+   larger than Ottawa's in absolute terms but split across many hospital
+   corporations and renal programs, so no one contract anchors a fleet the way
+   TOH's 900-patient program does.
+
+**Read:** Toronto is where you go once you have proof, not where you get it.
+Enter it with an Ottawa reference case, or with a payer-side product where
+fragmentation is the problem you solve rather than the obstacle you face.
+
+### 8.4 Ottawa versus Toronto at a glance
+
+| | Ottawa | Toronto |
+| --- | --- | --- |
+| Offload crisis | **Largely resolved** — don't lead with it | **Severe and live** — strongest S1 audience |
+| ALC pressure | 1 in 5 beds (TOH Civic) | High, spread across many corporations |
+| Dialysis anchor | **900+ patients, one program, 10 sites** | Larger, but fragmented across corporations |
+| Specialized transit | Para Transpo ~878k trips | Wheel-Trans 3.54M trips |
+| Competitive density | Moderate; Transdev/Voyago incumbent | **Highest in Ontario**, plus Uber Health |
+| Language | **Bilingual required** (FLSA, Montfort) | Highly multilingual, not statutorily bound |
+| Verdict | **Start here** | **Expand here** |
+
+---
+
+## 9. Product space — seven candidate surfaces
 
 Ranked by defensibility × evidence of pain.
 
@@ -381,7 +551,7 @@ Low near-term revenue; the highest-leverage asset if regulation ever lands.
 
 ---
 
-## 8. What carries over from EMSS — corrected
+## 10. What carries over from EMSS — corrected
 
 > **Revision 2.** The first version of this section was written before the EMSS
 > codebase was available and **assumed EMSS meant a dispatch/CAD system**. That
@@ -427,7 +597,7 @@ of a server, an account and a vendor.
 **A transport coordination layer cannot be built that way.** Matching a request
 to a provider, settling across payers and holding shared fleet state are
 inherently multi-party and networked. A booking exchange requires a server by
-definition. The product §10 recommends is precisely the shape AidPost defines
+definition. The product §12 recommends is precisely the shape AidPost defines
 itself against.
 
 **Reuse the engine. Do not reuse the pitch.**
@@ -447,7 +617,7 @@ and its most valuable surface (S1 right-sizing) is the one that walks back
 toward the regulated boundary. **Those are resourcing and appetite decisions,
 not research findings.**
 
-## 9. Risks
+## 11. Risks
 
 | Risk | Severity | Response |
 | --- | --- | --- |
@@ -468,7 +638,7 @@ not research findings.**
 
 ---
 
-## 10. Recommendation
+## 12. Recommendation
 
 **Do not build a dispatch platform.** Per-vehicle SaaS in Ontario tops out
 around $3.4M–$5.8M ARR and puts you in a knife fight with US incumbents who have
@@ -512,6 +682,6 @@ means missed treatments avoided — a number the buyer already tracks and alread
 answers for. Data ownership and continuity are a strong second argument and a
 poor first one.
 
-**The two open decisions in §10 are not research questions.** Whether to be a
+**The two open decisions in §12 are not research questions.** Whether to be a
 coordination layer, an operator, or a payer-side utility — and which wedge to
 fund — are the team's calls. Everything above is the input to them.
