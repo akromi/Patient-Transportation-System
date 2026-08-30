@@ -3,7 +3,7 @@
 **Read-only review of `akromi/emergency-medical-support-system` at `a8eb1d9`
 (2026-08-23), conducted August 2026.** Nothing in that repository was modified.
 
-This document replaces the speculative §08 of the Phase 0 survey, which was
+This document replaces the speculative §10 of the Phase 0 survey, which was
 written before the codebase was available and assumed EMSS meant a dispatch/CAD
 system. **That assumption was wrong.**
 
