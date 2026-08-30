@@ -20,6 +20,7 @@ CHROME_CANDIDATES = [
 ]
 
 PAGES = [
+    ("decision-memo.html", "decision-memo.pdf"),
     ("ontario-transport-gap.html", "ontario-transport-gap.pdf"),
     ("ottawa-business-case.html", "ottawa-business-case.pdf"),
 ]

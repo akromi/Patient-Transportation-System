@@ -1,0 +1,524 @@
+<title>Build, Operate, or Neither</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap">
+<style>
+:root{
+  --ground:#F4F6F7; --surface:#FCFCFB; --surface-2:#EDF1F2;
+  --ink:#101A1E; --ink-2:#4C5D64; --ink-3:#7A8B92;
+  --rule:#D9E0E3; --rule-soft:#E6EBED;
+  --accent:#0080A8; --accent-soft:#E3F0F5;
+  --signal:#C4620A; --signal-soft:#F8ECE0;
+  --neutral-mark:#9AAAB1;
+  --shadow:0 1px 2px rgba(16,26,30,.05), 0 8px 24px -12px rgba(16,26,30,.12);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --ground:#0E1417; --surface:#161F23; --surface-2:#1C272C;
+    --ink:#E6EDF0; --ink-2:#9FB0B7; --ink-3:#78888F;
+    --rule:#26333A; --rule-soft:#1E2A2F;
+    --accent:#2699C0; --accent-soft:#12303C;
+    --signal:#D47C2C; --signal-soft:#33230F;
+    --neutral-mark:#5E717A;
+    --shadow:0 1px 2px rgba(0,0,0,.4), 0 8px 24px -12px rgba(0,0,0,.6);
+  }
+}
+:root[data-theme="dark"]{
+  --ground:#0E1417; --surface:#161F23; --surface-2:#1C272C;
+  --ink:#E6EDF0; --ink-2:#9FB0B7; --ink-3:#78888F;
+  --rule:#26333A; --rule-soft:#1E2A2F;
+  --accent:#2699C0; --accent-soft:#12303C;
+  --signal:#D47C2C; --signal-soft:#33230F;
+  --neutral-mark:#5E717A;
+  --shadow:0 1px 2px rgba(0,0,0,.4), 0 8px 24px -12px rgba(0,0,0,.6);
+}
+
+*{box-sizing:border-box}
+body{
+  background:var(--ground); color:var(--ink);
+  font-family:"Source Serif 4",Georgia,"Times New Roman",serif;
+  font-size:17px; line-height:1.62;
+  -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:1080px; margin:0 auto; padding:0 28px 120px}
+
+/* ── masthead ─────────────────────────────────────── */
+.mast{padding:72px 0 40px; border-bottom:2px solid var(--ink)}
+.eyebrow{
+  font-family:"IBM Plex Mono",ui-monospace,monospace;
+  font-size:11.5px; letter-spacing:.16em; text-transform:uppercase;
+  color:var(--ink-3); display:flex; flex-wrap:wrap; gap:0 14px; align-items:baseline;
+}
+.eyebrow b{color:var(--accent); font-weight:600}
+h1{
+  font-family:Archivo,"Helvetica Neue",Arial,sans-serif;
+  font-size:clamp(38px,6.2vw,68px); line-height:1.02; letter-spacing:-.025em;
+  margin:20px 0 0; text-wrap:balance; max-width:16ch;
+}
+.deck{
+  font-size:clamp(19px,2.2vw,23px); line-height:1.5; color:var(--ink-2);
+  max-width:60ch; margin:22px 0 0;
+}
+.deck strong{color:var(--ink); font-weight:600}
+
+/* ── section scaffolding ──────────────────────────── */
+section{padding:56px 0 0}
+.sec-head{display:flex; gap:20px; align-items:baseline; margin-bottom:8px}
+.sec-num{
+  font-family:"IBM Plex Mono",ui-monospace,monospace;
+  font-size:12px; font-weight:600; color:var(--accent);
+  letter-spacing:.08em; padding-top:6px; flex:none; width:34px;
+  font-variant-numeric:tabular-nums;
+}
+h2{
+  font-family:Archivo,"Helvetica Neue",Arial,sans-serif;
+  font-size:clamp(25px,3.2vw,34px); line-height:1.12; letter-spacing:-.018em;
+  margin:0; text-wrap:balance;
+}
+h3{
+  font-family:Archivo,"Helvetica Neue",Arial,sans-serif;
+  font-weight:600; font-size:16.5px; letter-spacing:-.005em;
+  margin:34px 0 10px; color:var(--ink);
+}
+.body{margin-left:54px; max-width:66ch}
+.body p{margin:0 0 18px}
+.body p:last-child{margin-bottom:0}
+@media (max-width:680px){
+  .sec-head{gap:12px}
+  .sec-num{width:26px}
+  .body{margin-left:0}
+}
+a{color:var(--accent); text-underline-offset:3px}
+
+/* ── full-bleed blocks ────────────────────────────── */
+.block{
+  margin:30px 0 6px; background:var(--surface);
+  border:1px solid var(--rule); border-radius:3px;
+  padding:26px 26px 24px; box-shadow:var(--shadow);
+}
+.block-title{
+  font-family:"IBM Plex Mono",ui-monospace,monospace;
+  font-size:11px; letter-spacing:.15em; text-transform:uppercase;
+  color:var(--ink-3); margin:0 0 4px;
+}
+.block-sub{
+  font-family:Archivo,sans-serif; font-weight:600; font-size:17px;
+  margin:0 0 20px; color:var(--ink); letter-spacing:-.01em;
+}
+.corr{
+  padding:12px 16px; border-radius:3px; background:var(--signal-soft);
+  border-left:3px solid var(--signal); font-size:15.5px; line-height:1.55;
+}
+.corr strong{color:var(--signal)}
+.note{
+  font-family:"IBM Plex Mono",ui-monospace,monospace;
+  font-size:11.5px; line-height:1.6; color:var(--ink-3);
+  margin:18px 0 0; padding-top:14px; border-top:1px solid var(--rule-soft);
+}
+
+/* ── findings grid ────────────────────────────────── */
+.findings{display:grid; grid-template-columns:repeat(auto-fit,minmax(268px,1fr)); gap:1px; background:var(--rule); border:1px solid var(--rule); border-radius:3px; overflow:hidden; margin-top:26px}
+.finding{background:var(--surface); padding:22px 22px 24px; display:flex; flex-direction:column; gap:8px}
+.finding .k{
+  font-family:"IBM Plex Mono",ui-monospace,monospace;
+  font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--accent); font-weight:600;
+}
+.finding h4{
+  font-family:Archivo,sans-serif; font-weight:600; font-size:16px;
+  margin:0; letter-spacing:-.008em; line-height:1.3;
+}
+.finding p{margin:0; font-size:15px; line-height:1.55; color:var(--ink-2)}
+
+/* ── stat row ─────────────────────────────────────── */
+.stats{display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:1px; background:var(--rule); border:1px solid var(--rule); border-radius:3px; overflow:hidden; margin:26px 0 6px}
+.stat{background:var(--surface); padding:18px 18px 20px}
+.stat .v{
+  font-size:29px; letter-spacing:-.03em; line-height:1.05;
+  font-variant-numeric:tabular-nums; color:var(--ink); display:block;
+}
+.stat .v.em{color:var(--accent)}
+.stat .l{
+  font-family:"IBM Plex Mono",ui-monospace,monospace;
+  font-size:11px; line-height:1.5; color:var(--ink-3); margin-top:8px; display:block;
+}
+
+/* ── charts ───────────────────────────────────────── */
+.band{display:flex; gap:2px; height:56px; margin:6px 0 0}
+.band > div{
+  border-radius:2px; display:flex; align-items:center; padding:0 14px;
+  font-family:"IBM Plex Mono",ui-monospace,monospace; font-size:12px; font-weight:600;
+  color:var(--surface); letter-spacing:.02em; min-width:0; overflow:hidden;
+}
+.band .routine{background:var(--signal); flex:80}
+.band .urgent{background:var(--neutral-mark); flex:20; justify-content:flex-end; padding:0 10px}
+.band-key{
+  display:flex; flex-wrap:wrap; gap:6px 20px; margin-top:12px;
+  font-family:"IBM Plex Mono",ui-monospace,monospace; font-size:11.5px; color:var(--ink-2);
+}
+.band-key span{display:flex; align-items:center; gap:7px}
+.sw{width:11px; height:11px; border-radius:2px; flex:none}
+
+.bars{display:flex; flex-direction:column; gap:14px; margin-top:4px}
+.bar-row{display:grid; grid-template-columns:minmax(120px,180px) 1fr; gap:16px; align-items:center}
+.bar-lab{
+  font-family:"IBM Plex Mono",ui-monospace,monospace; font-size:12px;
+  line-height:1.35; color:var(--ink-2); text-align:right;
+}
+.bar-lab em{display:block; font-style:normal; color:var(--ink-3); font-size:10.5px; margin-top:3px}
+.bar-track{position:relative; height:26px; background:var(--surface-2); border-radius:2px}
+.bar-fill{
+  position:absolute; top:0; bottom:0; border-radius:2px;
+  display:flex; align-items:center; justify-content:flex-end; padding-right:9px;
+  font-family:"IBM Plex Mono",ui-monospace,monospace; font-size:11.5px; font-weight:600;
+  color:var(--surface); white-space:nowrap; transition:filter .15s ease;
+}
+.bar-fill.viable{background:var(--accent)}
+.bar-fill.trap{background:var(--neutral-mark)}
+.bar-row:hover .bar-fill{filter:brightness(1.08)}
+.bar-fill .outside{position:absolute; left:calc(100% + 9px); color:var(--ink-2)}
+@media (max-width:640px){
+  .bar-row{grid-template-columns:1fr; gap:5px}
+  .bar-lab{text-align:left}
+}
+.axis{
+  display:flex; justify-content:space-between; margin-top:12px; padding-top:9px;
+  border-top:1px solid var(--rule-soft);
+  font-family:"IBM Plex Mono",ui-monospace,monospace; font-size:10.5px; color:var(--ink-3);
+  font-variant-numeric:tabular-nums;
+}
+
+/* ── tables ───────────────────────────────────────── */
+.tw{overflow-x:auto; margin:26px 0 6px; border:1px solid var(--rule); border-radius:3px; background:var(--surface)}
+table{border-collapse:collapse; width:100%; min-width:600px; font-size:14.5px}
+th{
+  font-family:"IBM Plex Mono",ui-monospace,monospace;
+  font-size:10.5px; letter-spacing:.13em; text-transform:uppercase; color:var(--ink-3);
+  text-align:left; padding:14px 16px; border-bottom:1px solid var(--rule); font-weight:600;
+  white-space:nowrap; background:var(--surface-2);
+}
+td{padding:13px 16px; border-bottom:1px solid var(--rule-soft); vertical-align:top; line-height:1.45; color:var(--ink-2)}
+tr:last-child td{border-bottom:0}
+td strong{color:var(--ink); font-weight:600}
+td.n{font-family:"IBM Plex Mono",ui-monospace,monospace; font-variant-numeric:tabular-nums; font-size:13px; white-space:nowrap}
+.pill{
+  display:inline-block; font-family:"IBM Plex Mono",ui-monospace,monospace;
+  font-size:10px; letter-spacing:.09em; text-transform:uppercase; font-weight:600;
+  padding:3px 8px; border-radius:2px; white-space:nowrap;
+}
+.pill.hi{background:var(--signal-soft); color:var(--signal)}
+.pill.mid{background:var(--surface-2); color:var(--ink-2)}
+.pill.none{background:var(--surface-2); color:var(--ink-3)}
+.pill.ok{background:var(--accent-soft); color:var(--accent)}
+
+/* ── payer map ────────────────────────────────────── */
+.payers{display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:18px; margin-top:4px}
+.payer-col{border:1px solid var(--rule); border-radius:3px; overflow:hidden; background:var(--surface)}
+.payer-col > header{padding:14px 16px; border-bottom:1px solid var(--rule)}
+.payer-col.reg > header{background:var(--accent-soft)}
+.payer-col.unreg > header{background:var(--signal-soft)}
+.payer-col h4{
+  font-family:Archivo,sans-serif; font-weight:600; font-size:14px; margin:0;
+  letter-spacing:-.005em;
+}
+.payer-col.reg h4{color:var(--accent)}
+.payer-col.unreg h4{color:var(--signal)}
+.payer-col header p{
+  margin:4px 0 0; font-family:"IBM Plex Mono",ui-monospace,monospace;
+  font-size:10.5px; letter-spacing:.05em; text-transform:uppercase; color:var(--ink-3);
+}
+.payer-col ul{margin:0; padding:14px 16px 16px 32px; font-size:14.5px; color:var(--ink-2); line-height:1.5}
+.payer-col li{margin-bottom:7px}
+.payer-col li:last-child{margin-bottom:0}
+
+/* ── surfaces list ────────────────────────────────── */
+.surfaces{display:flex; flex-direction:column; gap:1px; background:var(--rule); border:1px solid var(--rule); border-radius:3px; overflow:hidden; margin-top:26px}
+.surf{background:var(--surface); padding:18px 20px; display:grid; grid-template-columns:46px 1fr auto; gap:16px; align-items:start}
+.surf .id{
+  font-family:"IBM Plex Mono",ui-monospace,monospace; font-size:12px; font-weight:600;
+  color:var(--accent); padding-top:2px;
+}
+.surf h4{font-family:Archivo,sans-serif; font-weight:600; font-size:15.5px; margin:0 0 5px; letter-spacing:-.006em}
+.surf p{margin:0; font-size:14.5px; line-height:1.5; color:var(--ink-2)}
+.surf .rank{align-self:center}
+@media (max-width:640px){
+  .surf{grid-template-columns:34px 1fr; gap:12px}
+  .surf .rank{grid-column:2; justify-self:start; margin-top:8px}
+}
+
+/* ── callout ──────────────────────────────────────── */
+.callout{
+  margin:30px 0 6px; padding:24px 26px; border-radius:3px;
+  background:var(--surface); border:1px solid var(--rule);
+  border-left:3px solid var(--accent);
+}
+.callout.warn{border-left-color:var(--signal)}
+.callout h4{
+  font-family:Archivo,sans-serif; font-weight:600; font-size:16px; margin:0 0 9px;
+  letter-spacing:-.008em;
+}
+.callout p{margin:0 0 12px; font-size:15.5px; line-height:1.55; color:var(--ink-2)}
+.callout p:last-child{margin-bottom:0}
+.callout strong{color:var(--ink); font-weight:600}
+
+/* ── recommendation ───────────────────────────────── */
+.rec{
+  margin-top:26px; border:2px solid var(--ink); border-radius:3px;
+  background:var(--surface); overflow:hidden;
+}
+.rec > header{padding:24px 26px 22px; border-bottom:1px solid var(--rule)}
+.rec header .k{
+  font-family:"IBM Plex Mono",ui-monospace,monospace; font-size:11px;
+  letter-spacing:.15em; text-transform:uppercase; color:var(--signal); font-weight:600;
+}
+.rec header h3{
+  font-size:clamp(21px,2.8vw,27px); margin:9px 0 0; letter-spacing:-.02em; line-height:1.18;
+}
+.rec ol{margin:0; padding:22px 26px 24px 46px; font-size:15.5px; line-height:1.55; color:var(--ink-2)}
+.rec ol li{margin-bottom:12px}
+.rec ol li:last-child{margin-bottom:0}
+.rec ol strong{color:var(--ink); font-weight:600}
+.seq{
+  display:flex; flex-wrap:wrap; align-items:center; gap:8px;
+  padding:18px 26px 22px; border-top:1px solid var(--rule); background:var(--surface-2);
+  font-family:"IBM Plex Mono",ui-monospace,monospace; font-size:11.5px; color:var(--ink-2);
+}
+.seq b{
+  background:var(--accent); color:var(--surface); padding:5px 10px; border-radius:2px;
+  font-weight:600; letter-spacing:.03em;
+}
+.seq span{color:var(--ink-3)}
+.seq i{font-style:normal; padding:5px 10px; border:1px solid var(--rule); border-radius:2px; background:var(--surface)}
+
+footer{margin-top:64px; padding-top:26px; border-top:2px solid var(--ink)}
+footer p{
+  font-family:"IBM Plex Mono",ui-monospace,monospace; font-size:11.5px;
+  line-height:1.7; color:var(--ink-3); margin:0 0 10px; max-width:76ch;
+}
+footer p:last-child{margin-bottom:0}
+footer strong{color:var(--ink-2)}
+@media (prefers-reduced-motion:reduce){*{transition:none!important; animation:none!important}}
+:focus-visible{outline:2px solid var(--accent); outline-offset:2px}
+
+/* ── memo: the verdict block ───────────────────── */
+.verdict{
+  margin:34px 0 0; border:2px solid var(--ink); border-radius:3px;
+  background:var(--surface); overflow:hidden;
+}
+.verdict > header{
+  padding:12px 26px; background:var(--ink);
+  font-family:"IBM Plex Mono",ui-monospace,monospace;
+  font-size:11px; letter-spacing:.18em; text-transform:uppercase;
+  color:var(--surface); font-weight:600;
+}
+.verdict .core{
+  padding:26px 26px 15px; font-family:Archivo,sans-serif; font-weight:600;
+  font-size:clamp(19px,2.6vw,25px); line-height:1.3; letter-spacing:-.017em;
+  text-wrap:balance;
+}
+.verdict .core em{font-style:normal; color:var(--accent)}
+.verdict .qual{
+  padding:0 26px 24px; font-size:15.5px; line-height:1.55; color:var(--ink-2);
+  margin:0; max-width:64ch;
+}
+.verdict .qual strong{color:var(--ink); font-weight:600}
+.split{
+  display:grid; grid-template-columns:1fr 1fr; gap:1px;
+  background:var(--rule); border:1px solid var(--rule); border-radius:3px;
+  overflow:hidden; margin:26px 0 6px;
+}
+.split > div{background:var(--surface); padding:20px 22px 22px}
+.split h4{
+  font-family:"IBM Plex Mono",ui-monospace,monospace; font-size:11px;
+  letter-spacing:.14em; text-transform:uppercase; margin:0 0 12px; font-weight:600;
+}
+.split .yes h4{color:var(--accent)}
+.split .no h4{color:var(--signal)}
+.split ul{margin:0; padding-left:18px; font-size:14.5px; line-height:1.55; color:var(--ink-2)}
+.split li{margin-bottom:9px}
+.split li:last-child{margin-bottom:0}
+.split strong{color:var(--ink); font-weight:600}
+@media (max-width:640px){ .split{grid-template-columns:1fr} }
+.action{
+  margin:30px 0 0; padding:28px 30px; border-radius:3px;
+  background:var(--accent-soft); border:1px solid var(--accent);
+}
+.action .k{
+  font-family:"IBM Plex Mono",ui-monospace,monospace; font-size:11px;
+  letter-spacing:.15em; text-transform:uppercase; color:var(--accent); font-weight:600;
+}
+.action h3{
+  font-family:Archivo,sans-serif; font-weight:700; margin:10px 0 12px;
+  font-size:clamp(19px,2.4vw,24px); letter-spacing:-.02em; line-height:1.22;
+}
+.action p{margin:0 0 12px; font-size:15.5px; line-height:1.55; color:var(--ink-2)}
+.action p:last-child{margin-bottom:0}
+.action strong{color:var(--ink); font-weight:600}
+</style>
+<div class="wrap">
+
+<header class="mast">
+  <div class="eyebrow"><b>Decision memo</b><span>Ontario patient transportation</span><span>August 2026</span></div>
+  <h1>Build, operate, or neither</h1>
+  <p class="deck">Two questions were put to the Phase 0 research: is there a market for this software, and what shape should it take. This memo answers both, and names the one action that makes the decision for you.</p>
+</header>
+
+<div class="verdict">
+  <header>The verdict</header>
+  <p class="core">Software alone, sold as software, into Ontario patient transportation is a <em>weak business</em>. The problem is enormous and real. The willingness to pay for software specifically is unproven, and the addressable pool does not justify the clinical and regulatory work the domain demands.</p>
+  <p class="qual"><strong>The pain and the market are different claims, and conflating them is how this fails.</strong> What follows separates them, then names the one shape that works.</p>
+</div>
+
+<section>
+  <div class="sec-head"><div class="sec-num">01</div><h2>The pain is not in doubt</h2></div>
+  <div class="body">
+    <p>Four in five inter-facility transfers in Ontario are clinically routine, yet a large share still ride 911 ambulances inside a system spending on the order of <strong>$2B a year</strong>. ALC patients hold roughly one bed in five at The Ottawa Hospital's Civic campus. One dialysis patient in ten misses a session every month, with transportation a contributing cause. Five separate networks move the same people on different days and none can see the others.</p>
+    <p>None of that is disputed, and none of it is sufficient. <strong>A market needs someone with a budget who will sign.</strong></p>
+  </div>
+</section>
+
+<section>
+  <div class="sec-head"><div class="sec-num">02</div><h2>Three findings that say be careful</h2></div>
+
+  <div class="findings">
+    <div class="finding">
+      <span class="k">Finding 01</span>
+      <h4>There is no payer</h4>
+      <p>OHIP does not cover non-emergency transport. No broker layer, no claims rail — the two things every US NEMT platform plugs into. <strong>You cannot import that architecture because there is nothing to import it into.</strong></p>
+    </div>
+    <div class="finding">
+      <span class="k">Finding 02</span>
+      <h4>The SaaS ceiling is low</h4>
+      <p>Per-vehicle dispatch software tops out at <strong>$3.4–5.8M ARR</strong> against every eligible vehicle in Ontario. At realistic penetration, under $2M. That is a lifestyle business carrying a clinical compliance burden.</p>
+    </div>
+    <div class="finding">
+      <span class="k">Finding 03</span>
+      <h4>Buyers don't buy on architecture</h4>
+      <p>Prehos collapsed <em>commercially</em> in 2026 and displaced ~22 Ontario services — prepaid fees stranded, hardware forced. They migrated <strong>cloud to cloud</strong>, taking two vendors to replace one. Burned by vendor risk, they still chose another backend platform.</p>
+    </div>
+  </div>
+
+  <div class="callout warn">
+    <h4>Finding 03 is the natural experiment, and it should change the pitch</h4>
+    <p>It is the closest thing this market has to a controlled test of whether buyers reward better architecture under duress. <strong>They did not.</strong> They rewarded compliance, references and support.</p>
+    <p>Sell the outcome, not the design. Data ownership and continuity are a strong second argument and a poor first one.</p>
+  </div>
+</section>
+
+<section>
+  <div class="sec-head"><div class="sec-num">03</div><h2>What is actually monetizable</h2></div>
+  <div class="body">
+    <p>Narrower than "patient transportation software" — and each is a contract, not a seat.</p>
+  </div>
+
+  <div class="tw">
+    <table>
+      <thead><tr><th>Opportunity</th><th>Why it's real</th><th>Shape</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><strong>Dialysis transport</strong><br><span style="color:var(--ink-3)">Regional renal programs</span></td>
+          <td>~109,000 Ottawa round trips a year under <strong>one clinical owner</strong>, against an outcome — missed treatments — the buyer already reports on</td>
+          <td>Service contract</td>
+        </tr>
+        <tr>
+          <td><strong>NIHB medical transport</strong><br><span style="color:var(--ink-3)">Indigenous Services Canada</span></td>
+          <td><strong>$166M in Ontario, growing ~20% a year.</strong> A single federal payer already contracting — the cleanest payer structure in the market</td>
+          <td>Payer utility</td>
+        </tr>
+        <tr>
+          <td><strong>Discharge and ALC flow</strong><br><span style="color:var(--ink-3)">Hospitals</span></td>
+          <td>Hospitals are measured on bed-days and will pay against them. Transport is the last-mile blocker a vendor can actually move</td>
+          <td>Outcome share</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p class="note" style="margin-left:0; max-width:76ch">What the research found was the <strong style="color:var(--ink-2)">spend</strong>. What it did not find was a <strong style="color:var(--ink-2)">budget owner</strong> — a line item someone already holds and is dissatisfied with. That gap is the difference between a strong yes and a qualified one, and it is answerable in a week of conversations.</p>
+</section>
+
+<section>
+  <div class="sec-head"><div class="sec-num">04</div><h2>The format</h2></div>
+  <div class="body">
+    <p>Not a product format at all.</p>
+  </div>
+
+  <div class="rec">
+    <header>
+      <span class="k">Recommended shape</span>
+      <h3>Operate the Ottawa dialysis book. Instrument it. Sell the coordination layer outward from a working reference site.</h3>
+    </header>
+    <ol>
+      <li><strong>It sidesteps the missing payer.</strong> You are paid for a service someone already buys, not for software nobody holds a budget line for.</li>
+      <li><strong>It generates the data that makes a platform credible</strong> — scheduling, utilisation, missed-treatment outcomes. That layer cannot be cold-sold without it.</li>
+      <li><strong>It puts you inside the buyer relationship</strong> rather than pitching into it from outside.</li>
+      <li><strong>It exercises the EMSS core in production.</strong> The Ontario Provincial Client Registry FHIR adapter, the op-log sync engine and the PHIPA primitives stop being assets on paper.</li>
+      <li><strong>It produces the reference case</strong> that both the Toronto and NIHB conversations require before they can start.</li>
+    </ol>
+    <div class="seq">
+      <b>Operate</b><span>→</span><i>Instrument</i><span>→</span><i>Coordination layer</i><span>→</span><i>Settlement rail</i>
+    </div>
+  </div>
+
+  <div class="split">
+    <div class="no">
+      <h4>Why not pure SaaS</h4>
+      <ul>
+        <li>A <strong>$3.4–5.8M</strong> ceiling at total penetration</li>
+        <li>Nothing to plug into — no broker, no claims rail</li>
+        <li>Competing with US incumbents who have better dispatch products and nothing to do with them here</li>
+        <li>Consolidators are installing captive portals at contract hospitals every year you wait</li>
+      </ul>
+    </div>
+    <div class="no">
+      <h4>Why not pure operator</h4>
+      <ul>
+        <li>Low margin, capital-intensive, <strong>labour is the binding constraint</strong></li>
+        <li>Break-even needs 7 vehicles at 85% utilisation — <strong>13 at 72%</strong></li>
+        <li>Entering against a global consolidator that can price below cost longer than you can</li>
+        <li>No compounding asset if you stop at vehicles</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="body">
+    <p><strong>The hybrid is the only shape where each half fixes the other's weakness.</strong> Operating solves software's payer problem; the software layer solves operating's margin and defensibility problem.</p>
+    <p>Longer term the defensible position is the <strong>eligibility and settlement rail</strong> — determining who pays which fraction across NIHB, the Northern grant, hospital, LTC and patient. It genuinely does not exist and the fragmentation is permanent. But it is the slowest build, and it needs the beachhead first.</p>
+  </div>
+</section>
+
+<section>
+  <div class="sec-head"><div class="sec-num">05</div><h2>The case against</h2></div>
+  <div class="body">
+    <p>This deserves stating as plainly as the recommendation, because the research supports it just as readily.</p>
+  </div>
+
+  <div class="callout warn">
+    <h4>If the constraint is capital and speed, don't do this</h4>
+    <p>The EMSS product's own commercialization analysis scores official health-system selling as a fortress and recommends the humanitarian path instead: <strong>revenue in months, light regulatory load</strong>, and it plays to the no-backend differentiator that transport actively contradicts.</p>
+    <p>Ontario patient transportation is a <strong>three-to-five-year build against a fragmented buyer</strong>, and a second front for the same team. Saying no is a legitimate answer, not a failure of nerve.</p>
+  </div>
+
+  <div class="body">
+    <h3>What would move this to a strong yes</h3>
+    <p>Evidence that a hospital or renal program <strong>already holds a line item for transport they are dissatisfied with.</strong> The research located the spend; it did not locate the owner. That single fact separates "there is a problem" from "there is a buyer," and no amount of further desk research will settle it.</p>
+  </div>
+</section>
+
+<section>
+  <div class="sec-head"><div class="sec-num">06</div><h2>The next action</h2></div>
+
+  <div class="action">
+    <span class="k">Do this before anything else</span>
+    <h3>One conversation with The Ottawa Hospital's Regional Nephrology Program</h3>
+    <p>Three questions: what missed treatments cost them in cancelled slots, what they believe transport costs them today, and whether a contracted pooled service would interest them.</p>
+    <p><strong>That conversation costs nothing and collapses the entire decision tree.</strong> With a yes, the fleet fills from day one, utilisation risk mostly disappears, and the platform has a reference site. With a no, you are a seventh entrant in a $2–8M market against a global operator, and the answer is no.</p>
+    <p>Everything else in the Phase 0 file — the survey, the opportunity model, the business case — is a plan waiting on it.</p>
+  </div>
+</section>
+
+<footer>
+  <p><strong>Basis.</strong> This memo synthesises the Phase 0 file and adds no new research. Figures come from <strong>docs/01-market-survey.md</strong>, <strong>docs/02-opportunity-model.md</strong> and <strong>docs/05-ottawa-business-case.md</strong>, and carry the confidence ratings recorded in <strong>docs/03-source-register.md</strong>.</p>
+  <p><strong>The caveat that governs all of it.</strong> Network restrictions during research blocked direct retrieval of primary sources, so most figures were reconstructed from search-result summaries rather than the documents themselves, and six of nine cost inputs in the business case are modelled rather than quoted. That is adequate for deciding direction. It is not adequate for a funding application, and the verification list says what to fix first.</p>
+</footer>
+
+</div>

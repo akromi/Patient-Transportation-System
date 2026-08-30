@@ -10,6 +10,7 @@ currently holds the research that decides what gets built.
 
 | Document | What it covers |
 | --- | --- |
+| [`docs/decision-memo.md`](docs/decision-memo.html) | **Start here.** The verdict: is there a market, what shape should it take, and the one conversation that settles it |
 | [`docs/01-market-survey.md`](docs/01-market-survey.md) | The full survey: system map, demand drivers, payer flows, regulation, competitors, whitespace |
 | [`docs/02-opportunity-model.md`](docs/02-opportunity-model.md) | Bottom-up sizing with every assumption written down and auditable |
 | [`docs/03-source-register.md`](docs/03-source-register.md) | Every source used, with a confidence rating and a verification to-do list |
@@ -55,11 +56,31 @@ where the two disagree, theirs wins.
   confidence rating in the source register. Verify anything marked MEDIUM or LOW
   before it enters a business case or an investor deck.
 
+## The verdict
+
+Recorded in the [decision memo](https://claude.ai/code/artifact/b6fd4f4b-a85a-4d13-ae86-07da4b3b21cf):
+
+**Software alone, sold as software, is a weak business here.** The pain is real
+and large; the willingness to pay for software specifically is unproven, and the
+per-vehicle SaaS ceiling ($3.4–5.8M ARR at total penetration) does not justify
+the clinical and regulatory work. Prehos is the natural experiment — displaced
+buyers chose another backend platform, not better architecture.
+
+**The shape that works is services-led:** operate the Ottawa dialysis book,
+instrument it, then sell the coordination layer outward from a working reference
+site. Operating solves software's missing-payer problem; the software layer
+solves operating's margin and defensibility problem.
+
+**The case against is legitimate.** If the constraint is capital and speed, the
+EMSS product's humanitarian path reaches revenue in months against a
+three-to-five-year build here.
+
 ## Next
 
-Phase 1 depends on two decisions that are the team's to make, not the
-research's: which beachhead segment to attack first, and whether the product is
-a coordination layer, an operator, or a payer-side utility. See §12.
+One conversation with The Ottawa Hospital's Regional Nephrology Program — what
+missed treatments cost them, what transport costs them today, and whether a
+contracted pooled service interests them. It costs nothing and collapses the
+decision tree. Everything else in this repository is a plan waiting on it.
 
 ## Published versions
 
@@ -67,6 +88,7 @@ a coordination layer, an operator, or a payer-side utility. See §12.
 | --- | --- |
 | [Ontario's Transport Gap](https://claude.ai/code/artifact/748f9af1-5f57-4cf7-9de7-75e11062ca51) — the survey | [`docs/ontario-transport-gap.html`](docs/ontario-transport-gap.html) |
 | [Ottawa Service Business Case](https://claude.ai/code/artifact/47a03ec4-6909-4793-bdf8-0432118f1006) | [`docs/ottawa-business-case.html`](docs/ottawa-business-case.html) |
+| [Build, Operate, or Neither](https://claude.ai/code/artifact/b6fd4f4b-a85a-4d13-ae86-07da4b3b21cf) — the decision memo | [`docs/decision-memo.html`](docs/decision-memo.html) |
 
 ## PDFs
 
