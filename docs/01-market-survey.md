@@ -65,9 +65,11 @@ entering creditor protection and would cease operating by **7 July 2026**, owing
 notice; some reverted to paper while the Ministry of Health sourced paper forms
 and adjusted reporting timelines. Prepaid fees became unsecured claims, and at
 least one service had to buy new hardware because the replacement would not run
-on its existing tablets. **The displaced buyers migrated cloud-to-cloud** — and
-it took two vendors to replace one. Two lessons: vendor-continuity risk is live
-and locally felt, and buyers under pressure still choose backend platforms.
+on its existing tablets. **The one documented replacement — Sault Ste. Marie —
+went cloud-to-cloud**, taking two vendors to replace one; where the other ~20
+services went is unpublished. Two lessons: vendor-continuity risk is live and
+locally felt, and the only migration anyone can observe went to another backend
+platform. That is a single case, not a market-wide conclusion.
 
 **7. The obvious product is the wrong product.** Per-vehicle dispatch SaaS at
 US benchmark pricing ($50–$200/vehicle/month) against Ontario's addressable
@@ -677,12 +679,15 @@ neutral exchange** (before consolidation closes it) → **S6 Northern/Indigenous
 
 ### One caution from the EMSS survey
 
-The Prehos collapse is the closest thing this market has to a natural
-experiment, and it cuts against architectural pitches. Twenty-two Ontario
-services were displaced by a **commercial** failure — not an outage — and the one
-documented migration went **cloud to cloud**, needing two vendors to replace one,
-at ~$63K/yr plus ~$33K one-time. Buyers who had just been burned by vendor
-continuity risk still bought another backend platform.
+The Prehos collapse is the only relevant evidence this market offers, and it
+cuts against architectural pitches — though read it for exactly what it is.
+Twenty-two Ontario services were displaced by a **commercial** failure, not an
+outage. **Exactly one replacement is documented** — Sault Ste. Marie, cloud to
+cloud, needing two vendors to replace one, at ~$63K/yr plus ~$33K one-time.
+Where the other ~20 went is unpublished, so this is a single observed case
+rather than a market-wide verdict. What it does show is that a buyer who had
+just been burned by vendor-continuity risk still chose another backend
+platform — and there is no evidence pointing the other way.
 
 **Read:** sell the outcome, not the architecture. For the dialysis wedge that
 means missed treatments avoided — a number the buyer already tracks and already

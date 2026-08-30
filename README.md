@@ -63,8 +63,9 @@ Recorded in the [decision memo](https://claude.ai/code/artifact/b6fd4f4b-a85a-4d
 **Software alone, sold as software, is a weak business here.** The pain is real
 and large; the willingness to pay for software specifically is unproven, and the
 per-vehicle SaaS ceiling ($3.4–5.8M ARR at total penetration) does not justify
-the clinical and regulatory work. Prehos is the natural experiment — displaced
-buyers chose another backend platform, not better architecture.
+the clinical and regulatory work. And the one Prehos replacement anyone can
+observe went to another backend platform rather than to better architecture —
+a single case, not a market-wide verdict.
 
 **The shape that works is services-led:** operate the Ottawa dialysis book,
 instrument it, then sell the coordination layer outward from a working reference
